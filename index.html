@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Never Let Me Go</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #444;
+            color: #fff;
+            padding: 10px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        section {
+            padding: 20px;
+        }
+        .editable {
+            border: 1px dashed #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            background: #f9f9f9;
+        }
+        .editable:focus {
+            outline: none;
+            border: 1px solid #333;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        button {
+            background: #444;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Never Let Me Go</h1>
+    </header>
+    <nav>
+        <a href=" ">Overview</a >
+        <a href="#characters">Characters</a >
+        <a href="#themes">Themes</a >
+        <a href="#edit">Edit Info</a >
+    </nav>
+    <section id="overview">
+        <h2>Overview</h2>
+        <p class="editable" contenteditable="true">
+            "Never Let Me Go" is a dystopian science fiction novel by Kazuo Ishiguro. It explores the lives of three friends—Kathy, Tommy, and Ruth—who discover unsettling truths about their existence and purpose in life.
+        </p >
+    </section>
+    <section id="characters">
+        <h2>Characters</h2>
+        <ul class="editable" contenteditable="true">
+            <li>Kathy H.</li>
+            <li>Tommy</li>
+            <li>Ruth</li>
+        </ul>
+    </section>
+    <section id="themes">
+        <h2>Themes</h2>
+        <p class="editable" contenteditable="true">
+            The novel delves into themes of identity, humanity, love, loss, and the ethical implications of scientific advancements.
+        </p >
+    </section>
+    <section id="edit">
+        <h2>Edit Information</h2>
+        <p>You can edit the text in the above sections directly. Click anywhere to modify!</p >
+        <button onclick="saveEdits()">Save Edits</button>
+        <button onclick="clearEdits()">Clear Saved Data</button>
+    </section>
+    <footer>
+        <p>Share this page: <button onclick="sharePage()">Copy Link</button></p >
+    </footer>
+
+    <script>
+        // Save edits to local storage
+        function saveEdits() {
+            const edits = document.querySelectorAll('.editable');
+            const data = {};
+            edits.forEach((edit, index) => {
+                data[`editable-${index}`] = edit.innerHTML;
+            });
+            localStorage.setItem('novelEdits', JSON.stringify(data));
+            alert('Edits saved!');
+        }
+
+        // Load saved edits
+        function loadEdits() {
+            const savedData = JSON.parse(localStorage.getItem('novelEdits'));
+            if (savedData) {
+                const edits = document.querySelectorAll('.editable');
+                edits.forEach((edit, index) => {
+                    if (savedData[`editable-${index}`]) {
+                        edit.innerHTML = savedData[`editable-${index}`];
+                    }
+                });
+            }
+        }
+
+        // Clear saved edits
+        function clearEdits() {
+            if (confirm('Are you sure you want to clear all saved edits?')) {
+                localStorage.removeItem('novelEdits');
+                location.reload();
+            }
+        }
+
+        // Share the page
+        function sharePage() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert('Page link copied to clipboard!');
+            });
+        }
+
+        // Load edits on page load
+        window.onload = loadEdits;
+    </script>
+</body>
+</html>
