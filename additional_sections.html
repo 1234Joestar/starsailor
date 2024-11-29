@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Additional Sections - Never Let Me Go</title>
+    <title>Never Let Me Go - Notes</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -18,13 +18,15 @@
         }
         nav {
             background-color: #555;
+            color: white;
+            display: flex;
+            justify-content: space-around;
             padding: 10px;
-            text-align: center;
         }
         nav a {
             color: white;
             text-decoration: none;
-            padding: 10px 20px;
+            padding: 5px 10px;
             border-radius: 5px;
         }
         nav a:hover {
@@ -32,9 +34,10 @@
         }
         section {
             margin: 20px;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
+            line-height: 1.6;
+        }
+        .highlight {
+            background-color: yellow;
         }
         footer {
             background-color: #333;
@@ -45,29 +48,94 @@
             bottom: 0;
             width: 100%;
         }
+        #search-box {
+            text-align: center;
+            margin: 20px;
+        }
+        #search-box input {
+            padding: 5px;
+            width: 200px;
+        }
+        #search-box button {
+            padding: 5px 10px;
+            margin-left: 5px;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Additional Sections - Never Let Me Go</h1>
+        <h1>Notes on Never Let Me Go</h1>
     </header>
     <nav>
-        <a href="index.html">Back to Main Page</a>
+        <a href="#setting">Setting</a>
+        <a href="#characters">Characters</a>
+        <a href="#themes">Themes</a>
+        <a href="#important-moments">Important Moments</a>
+        <a href="#questions">Questions</a>
+        <a href="additional_sections.html" target="_blank">Additional Sections</a>
     </nav>
-    <section>
-        <h2>Fan Interpretations</h2>
-        <p>This section dives into various fan interpretations of the book, including symbolic meanings of Hailsham, the guardians, and the clones’ journey.</p>
+    <div id="search-box">
+        <input type="text" id="search-input" placeholder="Search notes...">
+        <button onclick="searchText()">Search</button>
+    </div>
+    <section id="setting">
+        <h2>Setting</h2>
+        <p>Hailsham, a boarding school in England, and later the Cottages where students transition to adulthood, are central locations that reflect the isolation and control over the characters' lives.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque varius, sapien eget volutpat bibendum, magna enim feugiat tortor, a fermentum augue urna a quam.</p>
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+        <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</p>
+        <!-- Repeat the text multiple times -->
+        <p>...</p>
     </section>
-    <section>
-        <h2>Author's Perspective</h2>
-        <p>Kazuo Ishiguro has often mentioned that the book is less about cloning and more about human relationships and existential reflection. This section explores his interviews and essays.</p>
+    <section id="characters">
+        <h2>Characters</h2>
+        <p>Kathy H., the narrator, Tommy, Ruth, and the guardians at Hailsham are key figures shaping the story.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>...</p>
     </section>
-    <section>
-        <h2>Related Books and Media</h2>
-        <p>If you enjoyed <i>Never Let Me Go</i>, you might also like these books and movies: <i>The Handmaid's Tale</i> by Margaret Atwood, and the movie <i>Gattaca</i>.</p>
+    <section id="themes">
+        <h2>Themes</h2>
+        <p>Themes include identity, mortality, friendship, and the ethical dilemmas of cloning.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et turpis nisl. Praesent aliquam, metus ac suscipit aliquam, arcu sapien bibendum tortor, vel gravida elit metus ut orci.</p>
+        <p>Nam at quam non elit lacinia convallis. Proin sit amet felis ut magna cursus elementum.</p>
+        <p>...</p>
+    </section>
+    <section id="important-moments">
+        <h2>Important Moments</h2>
+        <p>The revelation of their purpose as clones and Kathy's reflections on her time at Hailsham are pivotal moments.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lacinia justo quis risus convallis cursus.</p>
+        <p>Proin vel nunc sed turpis tincidunt vehicula. Nulla facilisi. Curabitur aliquam, justo sit amet tincidunt accumsan, ligula purus faucibus metus.</p>
+        <p>...</p>
+    </section>
+    <section id="questions">
+        <h2>Questions</h2>
+        <p>What does it mean to live a meaningful life? How do the characters grapple with their pre-determined destinies?</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque convallis, nunc at bibendum mollis, lorem neque fringilla lacus, nec vestibulum eros augue non metus.</p>
+        <p>Fusce malesuada neque nec felis bibendum, ac facilisis neque gravida.</p>
+        <p>...</p>
     </section>
     <footer>
         <p>Created by [Your Name]</p>
     </footer>
+    <script>
+        function searchText() {
+            const input = document.getElementById('search-input').value.toLowerCase();
+            const sections = document.querySelectorAll('section');
+            
+            // Clear previous highlights
+            sections.forEach(section => {
+                section.innerHTML = section.innerHTML.replace(/<span class="highlight">|<\/span>/g, '');
+            });
+
+            if (input) {
+                sections.forEach(section => {
+                    const regex = new RegExp(input, 'gi');
+                    section.innerHTML = section.innerHTML.replace(regex, (match) => `<span class="highlight">${match}</span>`);
+                });
+            }
+        }
+    </script>
 </body>
 </html>
