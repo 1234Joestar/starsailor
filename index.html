@@ -114,7 +114,7 @@
 
 
 
-    <section id="character">
+    <section id="characters">
     <h2>Character</h2>
 
     <p><h4>Kathy·H:</h4></p>
@@ -198,22 +198,31 @@
         <p>Created by [Joe, Tiger, Oscar & Chal]</p>
     </footer>
     <script>
-        function searchText() {
-            const input = document.getElementById('search-input').value.toLowerCase();
-            const sections = document.querySelectorAll('section');
-            
-            // Clear previous highlights
-            sections.forEach(section => {
-                section.innerHTML = section.innerHTML.replace(/<span class="highlight">|<\/span>/g, '');
-            });
+    // 搜索功能
+    function searchText() {
+        const input = document.getElementById('search-input').value.toLowerCase();
+        const sections = document.querySelectorAll('section');
+        
+        // 清除之前的高亮
+        sections.forEach(section => {
+            section.innerHTML = section.innerHTML.replace(/<span class="highlight">|<\/span>/g, '');
+        });
 
-            if (input) {
-                sections.forEach(section => {
-                    const regex = new RegExp(input, 'gi');
-                    section.innerHTML = section.innerHTML.replace(regex, (match) => `<span class="highlight">${match}</span>`);
-                });
-            }
+        if (input) {
+            sections.forEach(section => {
+                const regex = new RegExp(input, 'gi');
+                section.innerHTML = section.innerHTML.replace(regex, (match) => `<span class="highlight">${match}</span>`);
+            });
         }
-    </script>
+    }
+
+    // 监听回车键触发搜索功能
+    document.getElementById('search-input').addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') { // 判断是否按下回车键
+            searchText();
+        }
+    });
+</script>
+
 </body>
 </html>
