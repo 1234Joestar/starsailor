@@ -6,29 +6,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Never Let Me Go - Themes</title>
   <style>
-    body {
+    html, body {
       margin: 0; 
       padding: 0;
+      height: 100%;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
       font-family: 'Times New Roman', serif;
-      background-color: #e3f6f5; 
+      background-color: #e3f6f5;
       color: #333;
     }
     header {
       background-color: #ffccd5;
-      padding: 20px;
       text-align: center;
-      margin-bottom: 10px;
+      padding: 30px 20px;
     }
     header h1 {
       margin: 0;
-      font-size: 1.8em;
-      color: #333;
+      font-size: 2em;
     }
     nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
       background-color: #ffe5ec;
-      text-align: center;
       padding: 10px;
-      margin-bottom: 20px;
     }
     nav a {
       color: #333;
@@ -36,20 +41,16 @@
       background-color: #e3f6f5;
       padding: 10px 20px;
       border-radius: 5px;
-      margin: 0 5px;
       transition: background-color 0.3s;
     }
     nav a:hover {
       background-color: #bde0fe;
     }
     main {
-      max-width: 800px;
+      flex: 1;
+      max-width: 1000px;
       margin: 0 auto;
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       padding: 20px;
-      line-height: 1.8;
     }
     h2 {
       color: #ff5678;
@@ -58,12 +59,12 @@
     footer {
       background-color: #ffccd5;
       text-align: center;
-      padding: 10px;
-      margin-top: 20px;
+      padding: 15px;
     }
   </style>
 </head>
 <body>
+
   <header>
     <h1>Themes</h1>
   </header>
@@ -72,31 +73,28 @@
     <a href="index.html">Home</a>
     <a href="setting.html">Setting</a>
     <a href="characters.html">Characters</a>
+    <a href="themes.html">Themes</a>
     <a href="question-part.html">Question Part</a>
     <a href="important-moments.html">Important Moments</a>
-    <a href="additional_sections.html" target="_blank">Additional Sections</a>
+    <a href="additional_sections.html">Additional Sections</a>
   </nav>
 
   <main>
     <h2>The Power of Memory</h2>
     <p>
-      One key theme is the role that memories play in shaping identity. Kathy often reflects 
-      on her past at Hailsham, using these recollections to maintain a sense of continuity 
-      and connection...
+      One prominent theme is the role memory plays in shaping identity. Kathy frequently 
+      looks back on her time at Hailsham, trying to find solace and meaning in the past.
     </p>
 
     <h2>Human Dignity and Morality</h2>
     <p>
-      Another central concern is how the students are treated and perceived by society.
-      Even though their fate seems predetermined, they demonstrate rich emotional lives 
-      and moral agency...
+      Another theme examines how society perceives the students and whether they are granted 
+      the same respect as others. The notion of donations raises ethical questions...
     </p>
-
-    <!-- More themes can be added here -->
   </main>
 
   <footer>
-    <p>© 2025 Created by [Your Name or Team]</p>
+    <p>Created by Joe's group</p>
   </footer>
 </body>
 </html>
