@@ -1,3 +1,4 @@
+<!-- FILE: index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,14 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Never Let Me Go - Overview</title>
   <style>
-    /* 1) 让 html & body 都占满浏览器高度 */
+    /* ---------- Global Reset & Full Height ---------- */
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
     }
 
-    /* 2) Flexbox布局，让footer粘底 */
+    /* ---------- Flexbox Sticky Footer Setup ---------- */
     body {
       display: flex;
       flex-direction: column;
@@ -21,10 +22,9 @@
       color: #333;
     }
 
-    /* 3) 头部样式 */
+    /* ---------- Header ---------- */
     header {
       background-color: #ffccd5; /* Pink */
-      color: #333;
       text-align: center;
       padding: 30px 20px;
     }
@@ -33,7 +33,7 @@
       font-size: 2em;
     }
 
-    /* 4) 导航样式 */
+    /* ---------- Navigation (Nav) ---------- */
     nav {
       display: flex;
       flex-wrap: wrap;
@@ -54,9 +54,9 @@
       background-color: #bde0fe; /* Lighter Blue on Hover */
     }
 
-    /* 5) main 占据剩余空间 */
+    /* ---------- Main (Flex:1 -> sticky footer) ---------- */
     main {
-      flex: 1; /* 关键：让 main 撑开剩余区域 */
+      flex: 1;
       max-width: 1000px;
       margin: 0 auto;
       padding: 20px;
@@ -74,7 +74,11 @@
       text-align: center;
       margin: 20px 0;
     }
-    /* 下面是卡片布局 */
+    /* If you want an image, place here:
+       <img src="images/banner.jpg" alt="Banner" width="70%" />
+    */
+
+    /* ---------- Card Layout for sections ---------- */
     .card-container {
       display: flex;
       flex-wrap: wrap;
@@ -83,7 +87,7 @@
     }
     .card {
       width: 280px;
-      background-color: #ffffff; /* White Background */
+      background-color: #ffffff; /* White */
       border-radius: 10px;
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       padding: 20px;
@@ -94,7 +98,7 @@
       transform: translateY(-5px);
     }
     .card h2 {
-      color: #ff5678; /* Deep Pink for titles */
+      color: #ff5678; /* Deep Pink */
       margin-bottom: 10px;
     }
     .card p {
@@ -112,30 +116,32 @@
       transition: background-color 0.3s;
     }
     .card a:hover {
-      background-color: #ff5678; /* Hover deeper pink */
+      background-color: #ff5678;
       color: #fff;
     }
 
-    /* 6) Footer 不需要 margin-top: 30px; */
+    /* ---------- Footer ---------- */
     footer {
-      background-color: #ffccd5; /* Pink */
-      color: #333;
+      background-color: #ffccd5;
       text-align: center;
       padding: 15px;
-      /* 不需要 margin-top 如果不想留空 */
     }
   </style>
 </head>
 <body>
+
   <header>
     <h1>Never Let Me Go - Overview</h1>
   </header>
 
   <nav>
-    <!-- 去掉 target="_blank" 即可在同页面打开 -->
     <a href="index.html">Home</a>
+    <a href="setting.html">Setting</a>
+    <a href="characters.html">Characters</a>
+    <a href="themes.html">Themes</a>
+    <a href="question-part.html">Question Part</a>
+    <a href="important-moments.html">Important Moments</a>
     <a href="additional_sections.html">Additional Sections</a>
-    <!-- You can add more links if needed -->
   </nav>
 
   <main>
@@ -143,15 +149,13 @@
       <h2>Welcome to the Never Let Me Go Study Notes</h2>
       <p>
         This site provides an in-depth look at the novel <em>Never Let Me Go</em>, including 
-        setting details, character analysis, themes, and discussion questions. Click on any 
-        section below to explore more specific content about the novel.
+        setting details, character analysis, themes, and discussion questions.
+        Click on any section below to explore more specific content about the novel.
       </p>
     </section>
 
     <div class="banner">
-      <!-- If needed:
-           <img src="images/banner.jpg" alt="Banner" width="70%" />
-      -->
+      <!-- Insert an image if you want -->
     </div>
 
     <section class="card-container">
