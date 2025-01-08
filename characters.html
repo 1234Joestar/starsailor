@@ -149,4 +149,34 @@
 
       <h4>Ruth:</h4>
       <p>Ruth is outgoing, outspoken, and very controlling and influential. Her outspoken nature is especially evident in her conversations with Kathy, where she always expresses her feelings and opinions unabashedly.</p>
-      <p>In the dormitory, other students often have to wait for her to express her opinion first before they wil
+      <p>In the dormitory, other students often have to wait for her to express her opinion first before they will follow suit, which fully reflects her authority among her classmates.</p>
+      <p>As well as her founding of Secret Guard, that organization can reflect the author's control through Ruth.</p>
+      <p>“I was never sure if Ruth had actually invented the secret guard herself, but there was no doubt she was the leader. There were between six and ten of us, the figure changing whenever Ruth allowed in a new member or expelled someone.” (page 49)</p>
+      <p>Her characterization not only sets the stage for the second half of the text, but the author also subtly reveals their special identities while showing the structure of the school and the complex relationships between classmates. A great deal of the text deals with Ruth's experience with donations, as well as the conflict and eventual reconciliation between her and Kathy.</p>
+      
+      <p>The relationship between Tommy and Kathy is full of subtle complexities, resembling both love and a very close friendship. Kathy always cares about Tommy and they often discuss many secrets about the school, sharing a deep trust and a unique bond. In contrast, Kathy and Ruth's relationship is full of tension. They are in the same grade and live in the same dormitory, but at times their relationship is permeated with lies and hypocrisy. Their friendship is complicated by a pencil case or a fight over the care of a guardian. The relationship is also strained by their personality differences—Ruth is strong and controlling, especially in the Secret Guard organization, where she is dominant. This gradually drives Kathy away from Ruth. The relationship between Tommy and Ruth is equally delicate. Ruth mocks Tommy from time to time, sometimes even deliberately preventing the relationship between Tommy and Kathy from developing. Despite this, Tommy and Kathy's relationship remains strong, and the bond between them may be love or a deep friendship. When Tommy is in a negative mood, it is only Kathy who can truly comfort him and calm him down again. It is the moments when they share discussions about the meaning of school and who they really are that therefore bring them closer together.</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>Created by Joe's group</p>
+  </footer>
+
+  <script>
+    function searchText() {
+      const inputVal = document.getElementById('search-input').value.trim();
+      const contentArea = document.querySelector('.content-wrapper');
+      if (!contentArea) return;
+
+      // 清除旧高亮
+      contentArea.innerHTML = contentArea.innerHTML.replace(/<span class="highlight">|<\/span>/g, '');
+
+      if (!inputVal) return; // 空输入不处理
+
+      // 匹配并高亮
+      const regex = new RegExp(inputVal, 'gi');
+      contentArea.innerHTML = contentArea.innerHTML.replace(regex, (match) => `<span class="highlight">${match}</span>`);
+    }
+  </script>
+</body>
+</html>
