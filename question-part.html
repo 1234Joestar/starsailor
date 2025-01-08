@@ -6,18 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Never Let Me Go - Question Part</title>
   <style>
+    /* ========== Global Reset & Full Height ========== */
     html, body {
       margin: 0; 
       padding: 0;
       height: 100%;
     }
+    /* ========== Flexbox Sticky Footer ========== */
     body {
       display: flex;
       flex-direction: column;
       font-family: 'Times New Roman', serif;
-      background-color: #e3f6f5;
+      background-color: #e3f6f5; /* Tiffany Blue outer */
       color: #333;
     }
+
     header {
       background-color: #ffccd5;
       text-align: center;
@@ -27,6 +30,7 @@
       margin: 0;
       font-size: 2em;
     }
+
     nav {
       display: flex;
       flex-wrap: wrap;
@@ -46,23 +50,70 @@
     nav a:hover {
       background-color: #bde0fe;
     }
+
     main {
       flex: 1;
       max-width: 1000px;
       margin: 0 auto;
       padding: 20px;
     }
-    h2 {
+
+    /* 白色容器：包裹正文 */
+    .content-wrapper {
+      background-color: #ffffff; 
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    /* 标题粉色 (h2, h3, h4) */
+    h2, h3, h4 {
       color: #ff5678;
+    }
+
+    /* 如果你想让 h4 更醒目可再增加 font-size 等 */
+    h4 {
       margin-top: 0;
     }
+
+    /* 原先的 ol 或 p 样式可保留；如需也可加 style */
     ol {
       margin-left: 20px;
     }
+
     footer {
       background-color: #ffccd5;
       text-align: center;
       padding: 15px;
+    }
+
+    /* ========== Search Highlight ========== */
+    .highlight {
+      background-color: yellow;
+    }
+    .search-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .search-container input {
+      padding: 8px;
+      width: 200px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .search-container button {
+      padding: 8px 15px;
+      margin-left: 5px;
+      border: none;
+      border-radius: 5px;
+      background-color: #ffccd5;
+      color: #333;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .search-container button:hover {
+      background-color: #ff5678;
+      color: #fff;
     }
   </style>
 </head>
@@ -82,38 +133,65 @@
   </nav>
 
   <main>
-    <h4>Chapter 1</h4>
-    <p>1. How did Kathy make an emotional connection with the donor in her role as a caregiver?</p>
-    <p>2. How Kathy's memories of Hailsham influenced her future life?</p>
-    <p>3. What is the relationship between Kathy's freedom and rights to choose who she cares for?</p>
-    <p>4. How does Kathy's persistence in her work reflect her love of caregiving?</p>
+    <!-- 搜索框 -->
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="Search notes...">
+      <button onclick="searchText()">Search</button>
+    </div>
 
-    <h4>Chapter 2</h4>
-    <p>1. What kind of empathy does Kathy show in her interactions with Tommy and how does this affect her perception of him?</p>
-    <p>2. How do Kathy's memories of Hailsham relate to Tommy?</p>
-    <p>3. How does Tommy's disappointment in the soccer tryouts reflect his social status at school?</p>
-    <p>4. How does Kathy's choice to approach Tommy when he is angry relate to her personality?</p>
-    <p>5. How does Kathy's concern for her clothing contrast with Tommy's concern for the soccer game?</p>
+    <!-- 白色容器，放正文 -->
+    <div class="content-wrapper">
 
-    <h4>Chapter 3</h4>
-    <p>1. How does Kathy's behavior regarding her time in Hailsham reflect her personal growth process?</p>
-    <p>2. How does Kathy's conversation with Tommy on the stairs demonstrate the development of their relationship?</p>
-    <p>3. How does Kathy's handling of the skirmishes that occurred between her and Tommy reflect her maturation?</p>
-    <p>4. How does Kathy's memory of Hailsham relate to her reflections on her current life?</p>
+      <h4>Chapter 1</h4>
+      <p>1. How did Kathy make an emotional connection with the donor in her role as a caregiver?</p>
+      <p>2. How Kathy's memories of Hailsham influenced her future life?</p>
+      <p>3. What is the relationship between Kathy's freedom and rights to choose who she cares for?</p>
+      <p>4. How does Kathy's persistence in her work reflect her love of caregiving?</p>
 
-    <h4>Chapter 4</h4>
-    <p>1. How does Kathy's view of her relationship with Tommy affect her perception of other students, especially those involved in the prank?</p>
-    <p>2. How does Kathy's empathy for her interactions with Tommy contrast with her attitude toward other students at Hailsham?</p>
-    <p>3. How did Kathy's handling of the skirmishes that occurred between her and Tommy affect their relationship?</p>
+      <h4>Chapter 2</h4>
+      <p>1. What kind of empathy does Kathy show in her interactions with Tommy and how does this affect her perception of him?</p>
+      <p>2. How do Kathy's memories of Hailsham relate to Tommy?</p>
+      <p>3. How does Tommy's disappointment in the soccer tryouts reflect his social status at school?</p>
+      <p>4. How does Kathy's choice to approach Tommy when he is angry relate to her personality?</p>
+      <p>5. How does Kathy's concern for her clothing contrast with Tommy's concern for the soccer game?</p>
 
-    <h4>Chapter 5</h4>
-    <p>1. Did Kathy's concerns about her concern for Tommy lead to a change in her behavior toward other students?</p>
+      <h4>Chapter 3</h4>
+      <p>1. How does Kathy's behavior regarding her time in Hailsham reflect her personal growth process?</p>
+      <p>2. How does Kathy's conversation with Tommy on the stairs demonstrate the development of their relationship?</p>
+      <p>3. How does Kathy's handling of the skirmishes that occurred between her and Tommy reflect her maturation?</p>
+      <p>4. How does Kathy's memory of Hailsham relate to her reflections on her current life?</p>
 
-    <!-- More chapters/questions can be added -->
+      <h4>Chapter 4</h4>
+      <p>1. How does Kathy's view of her relationship with Tommy affect her perception of other students, especially those involved in the prank?</p>
+      <p>2. How does Kathy's empathy for her interactions with Tommy contrast with her attitude toward other students at Hailsham?</p>
+      <p>3. How did Kathy's handling of the skirmishes that occurred between her and Tommy affect their relationship?</p>
+
+      <h4>Chapter 5</h4>
+      <p>1. Did Kathy's concerns about her concern for Tommy lead to a change in her behavior toward other students?</p>
+
+      <!-- 你可在此继续添加更多章节或问题 -->
+    </div>
   </main>
 
   <footer>
     <p>Created by Joe's group</p>
   </footer>
+
+  <script>
+    function searchText() {
+      const inputVal = document.getElementById('search-input').value.trim();
+      const contentArea = document.querySelector('.content-wrapper');
+      if (!contentArea) return;
+
+      // 移除已有的高亮
+      contentArea.innerHTML = contentArea.innerHTML.replace(/<span class="highlight">|<\/span>/g, '');
+
+      if (!inputVal) return;
+
+      // 正则高亮匹配
+      const regex = new RegExp(inputVal, 'gi');
+      contentArea.innerHTML = contentArea.innerHTML.replace(regex, (match) => `<span class="highlight">${match}</span>`);
+    }
+  </script>
 </body>
 </html>
