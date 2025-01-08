@@ -265,15 +265,23 @@
       const contentArea = document.querySelector('.content-wrapper');
       if (!contentArea) return;
 
-      // 移除已有的高亮
+      // 1) 移除已有的高亮
       contentArea.innerHTML = contentArea.innerHTML.replace(/<span class="highlight">|<\/span>/g, '');
 
+      // 2) 如果输入为空，不处理
       if (!inputVal) return;
 
-      // 正则高亮匹配
+      // 3) 匹配并高亮
       const regex = new RegExp(inputVal, 'gi');
       contentArea.innerHTML = contentArea.innerHTML.replace(regex, (match) => `<span class="highlight">${match}</span>`);
     }
+
+    // 监听回车
+    document.getElementById('search-input').addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        searchText();
+      }
+    });
   </script>
 </body>
 </html>
