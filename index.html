@@ -6,23 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Never Let Me Go - Overview</title>
   <style>
-    /* ---------- Global Reset & Full Height ---------- */
+    /* ========== Global Reset & Full Height ========== */
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
     }
 
-    /* ---------- Flexbox Sticky Footer Setup ---------- */
+    /* ========== Flexbox Sticky Footer Setup ========== */
     body {
       display: flex;
       flex-direction: column;
       font-family: 'Times New Roman', serif;
-      background-color: #e3f6f5; /* Tiffany Blue */
+      background-color: #e3f6f5; /* Tiffany Blue (outer background) */
       color: #333;
     }
 
-    /* ---------- Header ---------- */
+    /* ========== Header ========== */
     header {
       background-color: #ffccd5; /* Pink */
       text-align: center;
@@ -33,7 +33,7 @@
       font-size: 2em;
     }
 
-    /* ---------- Navigation (Nav) ---------- */
+    /* ========== Navigation (Nav) ========== */
     nav {
       display: flex;
       flex-wrap: wrap;
@@ -45,22 +45,36 @@
     nav a {
       color: #333;
       text-decoration: none;
-      background-color: #e3f6f5; /* Tiffany Blue */
+      background-color: #e3f6f5; 
       padding: 10px 20px;
       border-radius: 5px;
       transition: background-color 0.3s;
     }
     nav a:hover {
-      background-color: #bde0fe; /* Lighter Blue on Hover */
+      background-color: #bde0fe; 
     }
 
-    /* ---------- Main (Flex:1 -> sticky footer) ---------- */
+    /* ========== Main (Flex:1 -> sticky footer) ========== */
     main {
       flex: 1;
       max-width: 1000px;
       margin: 0 auto;
       padding: 20px;
     }
+
+    /* 白色容器，让正文内容在白色背景上显示 */
+    .content-wrapper {
+      background-color: #ffffff; /* White */
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    /* ========== Headings in Pink ========== */
+    h2, h3, h4 {
+      color: #ff5678; /* Deep Pink for headings */
+    }
+
     .intro {
       text-align: center;
       margin-bottom: 30px;
@@ -75,7 +89,7 @@
       margin: 20px 0;
     }
 
-    /* ---------- Card Layout for sections ---------- */
+    /* ========== Card Layout for sections ========== */
     .card-container {
       display: flex;
       flex-wrap: wrap;
@@ -95,7 +109,6 @@
       transform: translateY(-5px);
     }
     .card h2 {
-      color: #ff5678; /* Deep Pink */
       margin-bottom: 10px;
     }
     .card p {
@@ -117,11 +130,42 @@
       color: #fff;
     }
 
-    /* ---------- Footer ---------- */
+    /* ========== Footer ========== */
     footer {
       background-color: #ffccd5;
       text-align: center;
       padding: 15px;
+    }
+
+    /* ========== Search Highlight ========== */
+    .highlight {
+      background-color: yellow; 
+    }
+
+    /* ========== Search Bar Container ========== */
+    .search-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .search-container input {
+      padding: 8px;
+      width: 200px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .search-container button {
+      padding: 8px 15px;
+      margin-left: 5px;
+      border: none;
+      border-radius: 5px;
+      background-color: #ffccd5;
+      color: #333;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .search-container button:hover {
+      background-color: #ff5678;
+      color: #fff;
     }
   </style>
 </head>
@@ -142,77 +186,103 @@
   </nav>
 
   <main>
-    <section class="intro">
-      <h2>Welcome to the Never Let Me Go Study Notes</h2>
-      <p>
-        This site provides an in-depth look at the novel <em>Never Let Me Go</em>, including 
-        setting details, character analysis, themes, and discussion questions.
-        Click on any section below to explore more specific content about the novel.
-      </p>
-    </section>
-
-    <div class="banner">
-      <!-- Insert an image if needed:
-           <img src="images/banner.jpg" alt="Banner" width="70%" />
-      -->
+    <!-- 搜索框区域 -->
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="Search notes...">
+      <button onclick="searchText()">Search</button>
     </div>
 
-    <section class="card-container">
-      <!-- Existing 5 cards -->
-      <div class="card">
-        <h2>Setting</h2>
+    <!-- 白色容器包裹主要内容 -->
+    <div class="content-wrapper">
+      <section class="intro">
+        <h2>Welcome to the Never Let Me Go Study Notes</h2>
         <p>
-          Explore the environment of Hailsham School and the broader society in which the story takes place.
+          This site provides an in-depth look at the novel <em>Never Let Me Go</em>, including 
+          setting details, character analysis, themes, and discussion questions.
+          Click on any section below to explore more specific content about the novel.
         </p>
-        <a href="setting.html">Read More</a>
+      </section>
+
+      <div class="banner">
+        <!-- Insert an image if needed:
+             <img src="images/banner.jpg" alt="Banner" width="70%" />
+        -->
       </div>
 
-      <div class="card">
-        <h2>Characters</h2>
-        <p>
-          Meet Kathy, Tommy, Ruth, and other figures who shape the narrative through their hopes and conflicts.
-        </p>
-        <a href="characters.html">Read More</a>
-      </div>
+      <section class="card-container">
+        <div class="card">
+          <h2>Setting</h2>
+          <p>
+            Explore the environment of Hailsham School and the broader society in which the story takes place.
+          </p>
+          <a href="setting.html">Read More</a>
+        </div>
 
-      <div class="card">
-        <h2>Themes</h2>
-        <p>
-          Delve into key ideas of memory, identity, and human dignity woven throughout the novel.
-        </p>
-        <a href="themes.html">Read More</a>
-      </div>
+        <div class="card">
+          <h2>Characters</h2>
+          <p>
+            Meet Kathy, Tommy, Ruth, and other figures who shape the narrative through their hopes and conflicts.
+          </p>
+          <a href="characters.html">Read More</a>
+        </div>
 
-      <div class="card">
-        <h2>Question Part</h2>
-        <p>
-          Chapter-by-chapter questions designed to spark deeper understanding and critical thinking.
-        </p>
-        <a href="question-part.html">Read More</a>
-      </div>
+        <div class="card">
+          <h2>Themes</h2>
+          <p>
+            Delve into key ideas of memory, identity, and human dignity woven throughout the novel.
+          </p>
+          <a href="themes.html">Read More</a>
+        </div>
 
-      <div class="card">
-        <h2>Important Moments</h2>
-        <p>
-          Highlights of pivotal scenes and turning points that drive the storyline forward.
-        </p>
-        <a href="important-moments.html">Read More</a>
-      </div>
+        <div class="card">
+          <h2>Question Part</h2>
+          <p>
+            Chapter-by-chapter questions designed to spark deeper understanding and critical thinking.
+          </p>
+          <a href="question-part.html">Read More</a>
+        </div>
 
-      <!-- 6th card: Additional Sections -->
-      <div class="card">
-        <h2>Additional Sections</h2>
-        <p>
-          Extra analyses, symbols, and extended content about the novel, 
-          offering deeper insights and broader exploration.
-        </p>
-        <a href="additional_sections.html">Read More</a>
-      </div>
-    </section>
+        <div class="card">
+          <h2>Important Moments</h2>
+          <p>
+            Highlights of pivotal scenes and turning points that drive the storyline forward.
+          </p>
+          <a href="important-moments.html">Read More</a>
+        </div>
+
+        <div class="card">
+          <h2>Additional Sections</h2>
+          <p>
+            Extra analyses, symbols, and extended content about the novel, 
+            offering deeper insights and broader exploration.
+          </p>
+          <a href="additional_sections.html">Read More</a>
+        </div>
+      </section>
+    </div>
   </main>
 
   <footer>
     <p>Created by Joe's group</p>
   </footer>
+
+  <script>
+    function searchText() {
+      const inputVal = document.getElementById('search-input').value.trim();
+      const contentArea = document.querySelector('.content-wrapper');
+
+      if (!contentArea) return;
+
+      // 1) 去掉已有高亮
+      contentArea.innerHTML = contentArea.innerHTML.replace(/<span class="highlight">|<\/span>/g, '');
+
+      // 2) 如果输入为空，就不做替换
+      if (!inputVal) return;
+
+      // 3) 匹配并高亮
+      const regex = new RegExp(inputVal, 'gi');
+      contentArea.innerHTML = contentArea.innerHTML.replace(regex, (match) => `<span class="highlight">${match}</span>`);
+    }
+  </script>
 </body>
 </html>
