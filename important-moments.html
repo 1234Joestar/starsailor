@@ -6,18 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Never Let Me Go - Important Moments</title>
   <style>
+    /* ========== Global Reset & Full Height ========== */
     html, body {
       margin: 0; 
       padding: 0;
       height: 100%;
     }
+    /* ========== Flexbox Sticky Footer ========== */
     body {
       display: flex;
       flex-direction: column;
       font-family: 'Times New Roman', serif;
-      background-color: #e3f6f5;
+      background-color: #e3f6f5; 
       color: #333;
     }
+
     header {
       background-color: #ffccd5;
       text-align: center;
@@ -27,6 +30,7 @@
       margin: 0;
       font-size: 2em;
     }
+
     nav {
       display: flex;
       flex-wrap: wrap;
@@ -46,20 +50,60 @@
     nav a:hover {
       background-color: #bde0fe;
     }
+
     main {
       flex: 1;
       max-width: 1000px;
       margin: 0 auto;
       padding: 20px;
     }
-    h2 {
-      color: #ff5678;
-      margin-top: 0;
+
+    /* 白色容器 */
+    .content-wrapper {
+      background-color: #ffffff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
+
+    /* 标题粉色 */
+    h2, h3, h4 {
+      color: #ff5678;
+    }
+
     footer {
       background-color: #ffccd5;
       text-align: center;
       padding: 15px;
+    }
+
+    /* ========== Search Highlight ========== */
+    .highlight {
+      background-color: yellow;
+    }
+    .search-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .search-container input {
+      padding: 8px;
+      width: 200px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .search-container button {
+      padding: 8px 15px;
+      margin-left: 5px;
+      border: none;
+      border-radius: 5px;
+      background-color: #ffccd5;
+      color: #333;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .search-container button:hover {
+      background-color: #ff5678;
+      color: #fff;
     }
   </style>
 </head>
@@ -78,40 +122,67 @@
     <a href="additional_sections.html">Additional Sections</a>
   </nav>
 
-  <main>】
-    <h4>Tape:</h4>
-    <p>The tape is a physical vehicle for Kathy's personal history and emotions; it represents her memories of the past and her longing for loss. (Chapter 1)</p>
-    
-    <h4>Soccer:</h4>
-    <p>Soccer symbolizes social acceptance and team belonging in this chapter. Tommy's exclusion reflects his isolation among his peers. (Chapter 2)</p>
-    
-    <h4>Mud:</h4>
-    <p>The splash of mud on Tommy's body symbolizes his anger and loss of control, as well as suggesting that his social status may be tarnished and devalued. (Chapter 2)</p>
-    
-    <h4>Medical Check-ups:</h4>
-    <p>The weekly medical check-ups may symbolize the monitoring of the students at school and their status as “products”. (Chapter 3)</p>
-    
-    <h4>Staircase:</h4>
-    <p>The chance encounter on the staircase may symbolize the difference in social status between Kathy and Tommy, and the bond that develops between them. (Chapter 3)</p>
-    
-    <h4>Art Class:</h4>
-    <p>Tommy's behavior in art class may symbolize his desire for self-expression and his creative challenges in school. (Chapter 5)</p>
-    
-    <h4>Elephant Painting:</h4>
-    <p>Tommy's elephant painting may symbolize his childishness or immaturity and how he seeks approval and attention through art. (Chapter 5)</p>
-    
-    <h4>Horses:</h4>
-    <p>Ruth's connection with Kathy through the horse game may symbolize the power dynamic between them and how Kathy gains Ruth's approval by accepting the role. (Chapter 6)</p>
-    
-    <h4>Woods:</h4>
-    <p>The woods, as an element in the setting, may symbolize the unknown, fear, and the mystery that Hailsham students feel about the outside world. (Chapter 6)</p>
-    
-    <h4>Pavilion:</h4>
-    <p>The gym as a place for students to gather and socialize may symbolize community and a sense of belonging.
+  <main>
+    <!-- 搜索框 -->
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="Search notes...">
+      <button onclick="searchText()">Search</button>
+    </div>
+
+    <!-- 白色容器内容 -->
+    <div class="content-wrapper">
+      <!-- 保留你原先important-moments的段落 -->
+      <!-- 根据你粘贴的文本：有Tape, Soccer, Mud...等 -->
+      <h4>Tape:</h4>
+      <p>The tape is a physical vehicle for Kathy's personal history and emotions; it represents her memories of the past and her longing for loss. (Chapter 1)</p>
+      
+      <h4>Soccer:</h4>
+      <p>Soccer symbolizes social acceptance and team belonging in this chapter. Tommy's exclusion reflects his isolation among his peers. (Chapter 2)</p>
+      
+      <h4>Mud:</h4>
+      <p>The splash of mud on Tommy's body symbolizes his anger and loss of control, as well as suggesting that his social status may be tarnished and devalued. (Chapter 2)</p>
+      
+      <h4>Medical Check-ups:</h4>
+      <p>The weekly medical check-ups may symbolize the monitoring of the students at school and their status as “products”. (Chapter 3)</p>
+      
+      <h4>Staircase:</h4>
+      <p>The chance encounter on the staircase may symbolize the difference in social status between Kathy and Tommy, and the bond that develops between them. (Chapter 3)</p>
+      
+      <h4>Art Class:</h4>
+      <p>Tommy's behavior in art class may symbolize his desire for self-expression and his creative challenges in school. (Chapter 5)</p>
+      
+      <h4>Elephant Painting:</h4>
+      <p>Tommy's elephant painting may symbolize his childishness or immaturity and how he seeks approval and attention through art. (Chapter 5)</p>
+      
+      <h4>Horses:</h4>
+      <p>Ruth's connection with Kathy through the horse game may symbolize the power dynamic between them and how Kathy gains Ruth's approval by accepting the role. (Chapter 6)</p>
+      
+      <h4>Woods:</h4>
+      <p>The woods, as an element in the setting, may symbolize the unknown, fear, and the mystery that Hailsham students feel about the outside world. (Chapter 6)</p>
+      
+      <h4>Pavilion:</h4>
+      <p>The gym as a place for students to gather and socialize may symbolize community and a sense of belonging.</p>
+    </div>
   </main>
 
   <footer>
     <p>Created by Joe's group</p>
   </footer>
+
+  <script>
+    function searchText() {
+      const inputVal = document.getElementById('search-input').value.trim();
+      const contentArea = document.querySelector('.content-wrapper');
+      if (!contentArea) return;
+
+      // 移除以前的高亮
+      contentArea.innerHTML = contentArea.innerHTML.replace(/<span class="highlight">|<\/span>/g, '');
+
+      if (!inputVal) return;
+
+      const regex = new RegExp(inputVal, 'gi');
+      contentArea.innerHTML = contentArea.innerHTML.replace(regex, (match) => `<span class="highlight">${match}</span>`);
+    }
+  </script>
 </body>
 </html>
