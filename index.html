@@ -1,4 +1,3 @@
-<!-- FILE: index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -124,34 +123,88 @@
       padding: 15px;
     }
 
-    /* ========== AI Chat Sidebar ========== */
-    .ai-sidebar {
-      position: fixed; /* 固定在页面上 */
-      top: 90px;       /* 距离顶部位置 */
-      left: 20px;      /* 距离左侧位置 */
-      width: 300px;    /* 宽度 */
-      background-color: #ffffff; /* 白色背景 */
-      border-radius: 5px;
+    /* ========== AI Toggle Button ========== */
+    .ai-toggle-btn {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #ff5678;
+      color: #fff;
+      border: none;
+      font-size: 1.2em;
+      cursor: pointer;
+      z-index: 9999;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      padding: 10px;
-      z-index: 999;    /* 确保在最上层 */
+      transition: background-color 0.3s;
     }
-    .ai-title {
-      margin-top: 0;
-      text-align: center;
+    .ai-toggle-btn:hover {
+      background-color: #ff2f59;
+    }
+
+    /* ========== Chat Panel ========== */
+    .ai-panel {
+      position: fixed;
+      top: 80px; /* 调整此值让它别挡住header或nav */
+      left: -320px; /* 初始隐藏在屏幕左外 */
+      width: 320px;
+      height: 400px; 
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+      padding: 10px;
+      z-index: 9998;
+      transition: left 0.4s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .ai-panel.show {
+      left: 30px; /* 点击后滑出到left=30px */
+    }
+
+    .ai-panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+    .ai-panel-title {
+      margin: 0;
       color: #ff5678;
     }
+    .ai-panel-close {
+      background: transparent;
+      border: none;
+      font-size: 1.2em;
+      cursor: pointer;
+      color: #999;
+    }
+    .ai-panel-close:hover {
+      color: #333;
+    }
+
     .ai-log {
-      height: 250px;         /* 对话区域的高度 */
-      overflow-y: auto;      /* 可滚动 */
+      flex: 1;
       border: 1px solid #ccc;
       border-radius: 5px;
+      overflow-y: auto;
       padding: 5px;
       background-color: #f9f9f9;
-      margin-bottom: 10px;
       font-size: 0.9em;
-      line-height: 1.4;
+      margin-bottom: 5px;
     }
+    .ai-message-user {
+      color: #333;
+      margin: 3px 0;
+    }
+    .ai-message-assistant {
+      color: #004085;
+      margin: 3px 0;
+      white-space: pre-wrap; /* 保留换行 */
+    }
+
     .ai-input-container {
       display: flex;
       gap: 5px;
@@ -174,15 +227,6 @@
     .ai-submit:hover {
       background-color: #ff5678;
       color: #fff;
-    }
-    .ai-message-user {
-      color: #333;
-      margin: 5px 0;
-    }
-    .ai-message-assistant {
-      color: #004085;
-      margin: 5px 0;
-      white-space: pre-wrap; /* 保留换行 */
     }
   </style>
 </head>
@@ -216,7 +260,7 @@
     </section>
 
     <div class="banner">
-      <!-- Insert an image if needed:
+      <!-- If needed:
            <img src="images/banner.jpg" alt="Banner" width="70%" />
       -->
     </div>
@@ -278,30 +322,52 @@
     <p>Created by Joe's group</p>
   </footer>
 
-  <!-- ========== AI Chat Sidebar ========== -->
-  <div class="ai-sidebar">
-    <h3 class="ai-title">AI Chat</h3>
-    <div id="ai-log" class="ai-log">
-      <!-- 对话内容会动态插入 -->
+  <!-- ========== Floating AI Button ========== -->
+  <button class="ai-toggle-btn" id="ai-toggle-btn">AI</button>
+
+  <!-- ========== Chat Panel (Initially Hidden) ========== -->
+  <div class="ai-panel" id="ai-panel">
+    <div class="ai-panel-header">
+      <h3 class="ai-panel-title">AI Chat</h3>
+      <button class="ai-panel-close" id="ai-close-btn">&times;</button>
     </div>
+    <div class="ai-log" id="ai-log"></div>
     <div class="ai-input-container">
-      <input type="text" id="ai-input" class="ai-input" placeholder="Type your question...">
-      <button id="ai-submit" class="ai-submit">Send</button>
+      <input type="text" class="ai-input" id="ai-input" placeholder="Ask something...">
+      <button class="ai-submit" id="ai-submit">Send</button>
     </div>
   </div>
 
   <script>
-    // ******* 你需要在这里填写你自己的 KEY *******
-    const OPENAI_API_KEY = "hk-q0fzaf1000040746c0f6906bb53e99da2f2e667e9e53b46b"; // 请务必保护好你的 key
+    /***********************************************
+     *        1) Toggle Chat Panel Visibility      *
+     ***********************************************/
+    const aiToggleBtn = document.getElementById('ai-toggle-btn');
+    const aiPanel = document.getElementById('ai-panel');
+    const aiCloseBtn = document.getElementById('ai-close-btn');
 
-    // ChatGPT接口地址
+    // 点击 AI 按钮 => 展开面板
+    aiToggleBtn.addEventListener('click', () => {
+      aiPanel.classList.add('show');
+    });
+
+    // 关闭按钮 => 收回面板
+    aiCloseBtn.addEventListener('click', () => {
+      aiPanel.classList.remove('show');
+    });
+
+    /***********************************************
+     *        2) ChatGPT API (api.openai-hk.com)   *
+     ***********************************************/
+    // 请自行替换为你的 key
+    const OPENAI_API_KEY = "hk-q0fzaf1000040746c0f6906bb53e99da2f2e667e9e53b46b";
     const OPENAI_API_URL = "https://api.openai-hk.com";
 
-    // 对话上下文，可存放多轮信息
+    // 用于记录多轮对话上下文
     let messages = [
       {
         role: "system",
-        content: "You are ChatGPT, a large language model trained by OpenAI. You answer as concisely as possible."
+        content: "You are ChatGPT, a large language model trained by OpenAI. Answer as concisely as possible."
       }
     ];
 
@@ -309,31 +375,40 @@
     const aiInput = document.getElementById("ai-input");
     const aiSubmit = document.getElementById("ai-submit");
 
-    // 发送用户消息
-    function sendMessage() {
-      const userText = aiInput.value.trim();
-      if (!userText) return; // 空内容不处理
+    // 点击 send
+    aiSubmit.addEventListener('click', sendMessage);
+    // 回车发送
+    aiInput.addEventListener('keydown', function(e){
+      if(e.key === 'Enter'){
+        sendMessage();
+      }
+    });
 
-      // 1) 把用户消息显示在对话框
+    // 发送用户输入
+    function sendMessage(){
+      const userText = aiInput.value.trim();
+      if(!userText) return;
+
+      // 显示用户消息
       appendMessage("user", userText);
 
-      // 2) 加到 messages 数组
+      // 加入 messages
       messages.push({ role: "user", content: userText });
 
-      // 3) 清空输入框
+      // 清空输入框
       aiInput.value = "";
 
-      // 4) 调用 API
+      // 调用 ChatGPT
       callChatAPI();
     }
 
-    // 调用 ChatGPT API
-    async function callChatAPI() {
+    // 调用 ChatGPT (HK API)
+    async function callChatAPI(){
       try {
-        // 组装请求体
+        // 按你给的参数
         let requestData = {
-          model: "gpt-3.5-turbo",
           max_tokens: 1200,
+          model: "gpt-3.5-turbo",
           temperature: 0.8,
           top_p: 1,
           presence_penalty: 1,
@@ -344,53 +419,44 @@
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${OPENAI_API_KEY}`
+            "Authorization": "Bearer " + OPENAI_API_KEY
           },
           body: JSON.stringify(requestData)
         });
 
-        if (!response.ok) {
-          throw new Error("API request failed: " + response.status);
+        if(!response.ok){
+          throw new Error("API request failed, code: " + response.status);
         }
 
         let data = await response.json();
-        // data 里包含 choices[0].message.content
+        // data => { choices: [ { message: { content: ... } } ], ...}
         let assistantMsg = data.choices[0].message.content;
 
-        // 将助手的回答加入 messages
+        // 推到 messages
         messages.push({ role: "assistant", content: assistantMsg });
-        // 显示在对话框
+        // 显示到对话区
         appendMessage("assistant", assistantMsg);
-      } catch (error) {
-        console.error("Error:", error);
-        appendMessage("assistant", "Error: " + error.message);
+
+      } catch (err) {
+        console.error(err);
+        appendMessage("assistant", "Error: " + err.message);
       }
     }
 
-    // 往对话框插入消息
-    function appendMessage(role, text) {
-      let newP = document.createElement("p");
-      if (role === "user") {
-        newP.className = "ai-message-user";
-        newP.textContent = "You: " + text;
+    // 在日志中添加一条消息
+    function appendMessage(role, text){
+      let p = document.createElement('p');
+      if(role === "user"){
+        p.className = "ai-message-user";
+        p.textContent = "You: " + text;
       } else {
-        newP.className = "ai-message-assistant";
-        newP.textContent = "AI: " + text;
+        p.className = "ai-message-assistant";
+        p.textContent = "AI: " + text;
       }
-      aiLog.appendChild(newP);
+      aiLog.appendChild(p);
       // 滚动到底
       aiLog.scrollTop = aiLog.scrollHeight;
     }
-
-    // 点击按钮发送
-    aiSubmit.addEventListener("click", sendMessage);
-
-    // 回车发送
-    aiInput.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        sendMessage();
-      }
-    });
   </script>
 </body>
 </html>
