@@ -10,10 +10,9 @@
       margin: 0;
       padding: 0;
       height: 100%;
-      overflow-x: hidden; /* 避免横向滚动条 */
     }
 
-    /* ========== Flexbox Sticky Footer Setup ========== */
+    /* ========== Flexbox Sticky Footer ========== */
     body {
       display: flex;
       flex-direction: column;
@@ -106,7 +105,7 @@
     .card a {
       display: inline-block;
       padding: 8px 15px;
-      background-color: #ffccd5; /* Pink button */
+      background-color: #ffccd5; /* Pink */
       color: #333;
       border-radius: 5px;
       text-decoration: none;
@@ -124,7 +123,9 @@
       padding: 15px;
     }
 
-    /* ========== AI Button ========== */
+    /****************************************
+     *  AI Button (bottom-left corner)      *
+     ****************************************/
     .ai-btn {
       position: fixed;
       bottom: 30px;
@@ -145,31 +146,37 @@
       background-color: #ff2f59;
     }
 
-    /* ========== Chat Box (initially hidden) ========== */
+    /****************************************
+     *  Chat Box (hidden initially)         *
+     ****************************************/
     .ai-chat {
+      display: none;       /* 初始不显示 */
       position: fixed;
-      bottom: 90px;
-      left: 30px;
-      width: 320px;
-      height: 320px;
+      bottom: 90px;        /* 离底部留一些空间 */
+      left: 30px;          /* 左边固定 */
+      width: 320px;        /* 默认宽 */
+      height: 320px;       /* 默认高 */
       background-color: #ffffff;
       border: 1px solid #ccc;
       border-radius: 8px;
       box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
       z-index: 9998;
-      display: none; /* 初始隐藏 */
+      display: flex;
       flex-direction: column;
-      /* 禁用原生 resize，因为要自定义等比缩放 */
-      resize: none;
-      overflow: hidden;
+
+      /* 可缩放 */
+      resize: both;
+      overflow: auto;
     }
 
     .ai-header {
-      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       background-color: #ffe5ec;
+      padding: 5px 0;
       border-top-left-radius: 8px;
       border-top-right-radius: 8px;
-      padding: 5px 0;
     }
     .ai-header h3 {
       margin: 0;
@@ -179,12 +186,12 @@
 
     .ai-log {
       flex: 1;
-      border-top: 1px solid #ccc;
-      border-bottom: 1px solid #ccc;
       padding: 5px;
       overflow-y: auto;
       font-size: 0.9em;
       background-color: #f9f9f9;
+      border-top: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
     }
     .ai-message-user {
       color: #333;
@@ -196,10 +203,10 @@
       white-space: pre-wrap;
     }
 
-    .ai-input-container {
+    .ai-input-area {
       display: flex;
-      padding: 5px;
       gap: 5px;
+      padding: 5px;
       align-items: center;
     }
     .ai-input {
@@ -208,7 +215,7 @@
       border-radius: 5px;
       border: 1px solid #ccc;
     }
-    .ai-submit {
+    .ai-send {
       padding: 6px 12px;
       border: none;
       border-radius: 5px;
@@ -217,28 +224,13 @@
       cursor: pointer;
       transition: background-color 0.3s;
     }
-    .ai-submit:hover {
+    .ai-send:hover {
       background-color: #ff5678;
       color: #fff;
     }
-
-    /* ========== Resize Handle (bottom-right corner) ========== */
-    .ai-resize-handle {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background-color: transparent;
-      right: 0;
-      bottom: 0;
-      cursor: nwse-resize;
-      z-index: 10;
-    }
-    /* 可以加个小三角图标之类: after content */
-
   </style>
 </head>
 <body>
-
   <!-- ========== Header ========== -->
   <header>
     <h1>Never Let Me Go - Overview</h1>
@@ -267,7 +259,7 @@
     </section>
 
     <div class="banner">
-      <!-- if needed <img src="images/banner.jpg" alt="Banner" width="70%" /> -->
+      <!-- if needed: <img src="images/banner.jpg" alt="Banner" width="70%" /> -->
     </div>
 
     <section class="card-container">
@@ -327,43 +319,44 @@
     <p>Created by Joe's group</p>
   </footer>
 
-  <!-- ========== AI Button ========== -->
+  <!-- ========== AI Toggle Button ========== -->
   <button class="ai-btn" id="ai-btn">AI</button>
 
-  <!-- ========== Chat Box (with ratio-based resizing) ========== -->
-  <div class="ai-chat" id="ai-chat" style="display: none;">
+  <!-- ========== Chat Box (Resizable) ========== -->
+  <div class="ai-chat" id="ai-chat">
     <div class="ai-header">
       <h3>AI Chat</h3>
     </div>
-    <div class="ai-log" id="ai-log"></div>
-    <div class="ai-input-container">
-      <input type="text" class="ai-input" id="ai-input" placeholder="Ask anything...">
-      <button class="ai-submit" id="ai-submit">Send</button>
+    <div class="ai-log" id="ai-log">
+      <!-- Messages appended here -->
     </div>
-    <!-- 底部右下角的小方块，用于维持等比例缩放 -->
-    <div class="ai-resize-handle" id="ai-resize-handle"></div>
+    <div class="ai-input-area">
+      <input type="text" class="ai-input" id="ai-input" placeholder="Ask...">
+      <button class="ai-send" id="ai-send">Send</button>
+    </div>
   </div>
 
   <script>
-    /***************************************************
-     * 1) Toggle Chat Box by single-click "AI" button  *
-     ***************************************************/
-    const aiBtn  = document.getElementById('ai-btn');
-    const aiChat = document.getElementById('ai-chat');
-    let chatOpen = false; // 是否打开
+    /***********************************************
+     *        1) Toggle Chat Box Visibility        *
+     ***********************************************/
+    const aiBtn    = document.getElementById('ai-btn');
+    const aiChat   = document.getElementById('ai-chat');
+    let isChatOpen = false;
 
     aiBtn.addEventListener('click', () => {
-      chatOpen = !chatOpen;
-      aiChat.style.display = chatOpen ? 'flex' : 'none';
+      // 如果是隐藏 -> 显示；如果是显示 -> 隐藏
+      isChatOpen = !isChatOpen;
+      aiChat.style.display = isChatOpen ? 'block' : 'none';
     });
 
-    /***************************************************
-     * 2) Strict call to api.openai-hk.com            *
-     ***************************************************/
-    // 将这里替换为你的 key，若要GPT-4，把 model 改成 "gpt-4"
-    const OPENAI_API_KEY = "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";
-    const OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
+    /***********************************************
+     *        2) ChatGPT HK API Calls             *
+     ***********************************************/
+    const OPENAI_API_KEY = "hk-替换为你的key"; // 你自己的 key
+    const OPENAI_API_URL = "https://api.openai-hk.com/v1/chat/completions";
 
+    // 对话上下文
     let messages = [
       {
         role: "system",
@@ -373,9 +366,11 @@
 
     const aiLog   = document.getElementById('ai-log');
     const aiInput = document.getElementById('ai-input');
-    const aiSubmit= document.getElementById('ai-submit');
+    const aiSend  = document.getElementById('ai-send');
 
-    aiSubmit.addEventListener('click', sendMessage);
+    // 点击发送
+    aiSend.addEventListener('click', sendMessage);
+    // 回车发送并清空
     aiInput.addEventListener('keydown', (e) => {
       if(e.key === 'Enter') {
         sendMessage();
@@ -386,10 +381,16 @@
       const userText = aiInput.value.trim();
       if(!userText) return;
 
+      // 显示用户消息
       appendMessage('user', userText);
-      messages.push({ role: "user", content: userText });
-      aiInput.value = ""; // 清空输入
 
+      // 加到 messages
+      messages.push({ role: "user", content: userText });
+
+      // 清空输入框
+      aiInput.value = "";
+
+      // 调用ChatGPT
       callChatAPI();
     }
 
@@ -404,32 +405,34 @@
           messages: messages
         };
 
-        let res = await fetch(OPENAI_API_URL, {
+        let response = await fetch(OPENAI_API_URL, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${OPENAI_API_KEY}`
+            "Authorization": "Bearer " + OPENAI_API_KEY
           },
           body: JSON.stringify(requestData)
         });
 
-        if(!res.ok){
-          throw new Error("API request failed, code: " + res.status);
+        if(!response.ok){
+          throw new Error("API request failed, code: " + response.status);
         }
 
-        let data = await res.json();
+        let data = await response.json();
         let assistantMsg = data.choices[0].message.content;
+
+        // 追加到对话
         messages.push({ role: "assistant", content: assistantMsg });
         appendMessage('assistant', assistantMsg);
 
-      } catch(err){
+      } catch(err) {
         console.error(err);
         appendMessage('assistant', "Error: " + err.message);
       }
     }
 
     function appendMessage(role, text){
-      let p = document.createElement('p');
+      const p = document.createElement('p');
       if(role === 'user'){
         p.className = 'ai-message-user';
         p.textContent = 'You: ' + text;
@@ -439,84 +442,6 @@
       }
       aiLog.appendChild(p);
       aiLog.scrollTop = aiLog.scrollHeight; // 滚动到底
-    }
-
-    /***************************************************
-     * 3) Maintain 1:1 aspect ratio while resizing     *
-     ***************************************************/
-    const aiResizeHandle = document.getElementById('ai-resize-handle');
-
-    // 初始宽高
-    let startWidth  = 320;
-    let startHeight = 320;
-    let ratio       = 320/320; // 1.0
-
-    let startMouseX, startMouseY;
-    let resizing = false;
-
-    aiResizeHandle.addEventListener('mousedown', (e) => {
-      resizing = true;
-      startMouseX = e.clientX;
-      startMouseY = e.clientY;
-      // 记录当前面板宽高
-      const rect = aiChat.getBoundingClientRect();
-      startWidth  = rect.width;
-      startHeight = rect.height;
-      ratio       = startWidth / startHeight; // 1.0 if squares
-
-      document.addEventListener('mousemove', onMouseMove);
-      document.addEventListener('mouseup', onMouseUp);
-      e.preventDefault();
-    });
-
-    function onMouseMove(e){
-      if(!resizing) return;
-
-      const dx = e.clientX - startMouseX;
-      const dy = e.clientY - startMouseY;
-
-      // 取横纵位移绝对值较大的那个来决定新的 size
-      // 这样可近似保持等比
-      let delta = Math.abs(dx) > Math.abs(dy) ? dx : dy;
-
-      // 如果 dx>0,表示向右拖大, dy>0向下拖大,
-      // 但我们同时希望保持 1:1 => newWidth= newHeight
-      // sign 只取 dx 还是 dy? 这里统一用 dx>0 扩大
-      // 也可做更多逻辑, 简化: 
-      if(Math.abs(dx) > Math.abs(dy)){
-        // 基于 dx
-        if(dx < 0) delta = Math.max(dx, -2000); // 负值
-      } else {
-        // 基于 dy
-        if(dy < 0) delta = Math.max(dy, -2000);
-      }
-
-      let newWidth  = startWidth + delta;
-      let newHeight = startHeight + delta * (1/ratio); 
-      // 因为 ratio= w/h, so h= w/ratio => w= h* ratio
-      // 但我们 want w= h => ratio=1
-
-      // 防止超出屏幕
-      // bottom: 90px, left:30px => 计算剩余屏幕
-      const maxWidth  = window.innerWidth  - 30 - 50;  // 50 预留安全
-      const maxHeight = window.innerHeight - 90 - 50;
-
-      // 限制最小尺寸
-      const minSize = 150; // 不要太小
-      newWidth  = Math.max(minSize, Math.min(newWidth,  maxWidth));
-      newHeight = Math.max(minSize, Math.min(newHeight, maxHeight));
-
-      // 修正为等比
-      // 这里我们固定 ratio= startWidth/startHeight
-      const finalSize = Math.min(newWidth, newHeight * ratio);
-      aiChat.style.width  = finalSize + 'px';
-      aiChat.style.height = finalSize / ratio + 'px';
-    }
-
-    function onMouseUp(e){
-      resizing = false;
-      document.removeEventListener('mousemove', onMouseMove);
-      document.removeEventListener('mouseup', onMouseUp);
     }
   </script>
 </body>
