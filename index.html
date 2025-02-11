@@ -123,14 +123,77 @@
       text-align: center;
       padding: 15px;
     }
+
+    /* ========== AI Chat Sidebar ========== */
+    .ai-sidebar {
+      position: fixed; /* 固定在页面上 */
+      top: 90px;       /* 距离顶部位置 */
+      left: 20px;      /* 距离左侧位置 */
+      width: 300px;    /* 宽度 */
+      background-color: #ffffff; /* 白色背景 */
+      border-radius: 5px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      padding: 10px;
+      z-index: 999;    /* 确保在最上层 */
+    }
+    .ai-title {
+      margin-top: 0;
+      text-align: center;
+      color: #ff5678;
+    }
+    .ai-log {
+      height: 250px;         /* 对话区域的高度 */
+      overflow-y: auto;      /* 可滚动 */
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 5px;
+      background-color: #f9f9f9;
+      margin-bottom: 10px;
+      font-size: 0.9em;
+      line-height: 1.4;
+    }
+    .ai-input-container {
+      display: flex;
+      gap: 5px;
+    }
+    .ai-input {
+      flex: 1;
+      padding: 6px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .ai-submit {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 5px;
+      background-color: #ffccd5;
+      color: #333;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .ai-submit:hover {
+      background-color: #ff5678;
+      color: #fff;
+    }
+    .ai-message-user {
+      color: #333;
+      margin: 5px 0;
+    }
+    .ai-message-assistant {
+      color: #004085;
+      margin: 5px 0;
+      white-space: pre-wrap; /* 保留换行 */
+    }
   </style>
 </head>
 <body>
 
+  <!-- ========== Header ========== -->
   <header>
     <h1>Never Let Me Go - Overview</h1>
   </header>
 
+  <!-- ========== Nav ========== -->
   <nav>
     <a href="index.html">Home</a>
     <a href="setting.html">Setting</a>
@@ -141,6 +204,7 @@
     <a href="additional_sections.html">Additional Sections</a> 
   </nav>
 
+  <!-- ========== Main Content ========== -->
   <main>
     <section class="intro">
       <h2>Welcome to the Never Let Me Go Study Notes</h2>
@@ -158,7 +222,6 @@
     </div>
 
     <section class="card-container">
-      <!-- Existing 5 cards -->
       <div class="card">
         <h2>Setting</h2>
         <p>
@@ -199,7 +262,6 @@
         <a href="important-moments.html">Read More</a>
       </div>
 
-      <!-- 6th card: Additional Sections -->
       <div class="card">
         <h2>Additional Sections</h2>
         <p>
@@ -211,8 +273,124 @@
     </section>
   </main>
 
+  <!-- ========== Footer ========== -->
   <footer>
     <p>Created by Joe's group</p>
   </footer>
+
+  <!-- ========== AI Chat Sidebar ========== -->
+  <div class="ai-sidebar">
+    <h3 class="ai-title">AI Chat</h3>
+    <div id="ai-log" class="ai-log">
+      <!-- 对话内容会动态插入 -->
+    </div>
+    <div class="ai-input-container">
+      <input type="text" id="ai-input" class="ai-input" placeholder="Type your question...">
+      <button id="ai-submit" class="ai-submit">Send</button>
+    </div>
+  </div>
+
+  <script>
+    // ******* 你需要在这里填写你自己的 KEY *******
+    const OPENAI_API_KEY = "hk-q0fzaf1000040746c0f6906bb53e99da2f2e667e9e53b46b"; // 请务必保护好你的 key
+
+    // ChatGPT接口地址
+    const OPENAI_API_URL = "https://api.openai-hk.com";
+
+    // 对话上下文，可存放多轮信息
+    let messages = [
+      {
+        role: "system",
+        content: "You are ChatGPT, a large language model trained by OpenAI. You answer as concisely as possible."
+      }
+    ];
+
+    const aiLog = document.getElementById("ai-log");
+    const aiInput = document.getElementById("ai-input");
+    const aiSubmit = document.getElementById("ai-submit");
+
+    // 发送用户消息
+    function sendMessage() {
+      const userText = aiInput.value.trim();
+      if (!userText) return; // 空内容不处理
+
+      // 1) 把用户消息显示在对话框
+      appendMessage("user", userText);
+
+      // 2) 加到 messages 数组
+      messages.push({ role: "user", content: userText });
+
+      // 3) 清空输入框
+      aiInput.value = "";
+
+      // 4) 调用 API
+      callChatAPI();
+    }
+
+    // 调用 ChatGPT API
+    async function callChatAPI() {
+      try {
+        // 组装请求体
+        let requestData = {
+          model: "gpt-3.5-turbo",
+          max_tokens: 1200,
+          temperature: 0.8,
+          top_p: 1,
+          presence_penalty: 1,
+          messages: messages
+        };
+
+        let response = await fetch(OPENAI_API_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${OPENAI_API_KEY}`
+          },
+          body: JSON.stringify(requestData)
+        });
+
+        if (!response.ok) {
+          throw new Error("API request failed: " + response.status);
+        }
+
+        let data = await response.json();
+        // data 里包含 choices[0].message.content
+        let assistantMsg = data.choices[0].message.content;
+
+        // 将助手的回答加入 messages
+        messages.push({ role: "assistant", content: assistantMsg });
+        // 显示在对话框
+        appendMessage("assistant", assistantMsg);
+      } catch (error) {
+        console.error("Error:", error);
+        appendMessage("assistant", "Error: " + error.message);
+      }
+    }
+
+    // 往对话框插入消息
+    function appendMessage(role, text) {
+      let newP = document.createElement("p");
+      if (role === "user") {
+        newP.className = "ai-message-user";
+        newP.textContent = "You: " + text;
+      } else {
+        newP.className = "ai-message-assistant";
+        newP.textContent = "AI: " + text;
+      }
+      aiLog.appendChild(newP);
+      // 滚动到底
+      aiLog.scrollTop = aiLog.scrollHeight;
+    }
+
+    // 点击按钮发送
+    aiSubmit.addEventListener("click", sendMessage);
+
+    // 回车发送
+    aiInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        sendMessage();
+      }
+    });
+  </script>
 </body>
 </html>
