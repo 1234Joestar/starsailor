@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>A Digital Journey into <i>Never Let Me Go</i></title>
   <style>
-    /* ---------- Global Reset & Full Height ---------- */
+    /* ========== Global Reset & Full Height ========== */
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
     }
 
-    /* ---------- Flexbox Sticky Footer Setup ---------- */
+    /* ========== Flexbox Sticky Footer ========== */
     body {
       display: flex;
       flex-direction: column;
@@ -21,7 +21,7 @@
       color: #333;
     }
 
-    /* ---------- Header ---------- */
+    /* ========== Header ========== */
     header {
       background-color: #ffccd5; /* Pink */
       text-align: center;
@@ -32,7 +32,7 @@
       font-size: 2em;
     }
 
-    /* ---------- Navigation (Nav) ---------- */
+    /* ========== Navigation (Nav) ========== */
     nav {
       display: flex;
       flex-wrap: wrap;
@@ -53,7 +53,7 @@
       background-color: #bde0fe; /* Lighter Blue on Hover */
     }
 
-    /* ---------- Main (Flex:1 -> sticky footer) ---------- */
+    /* ========== Main (Flex:1 -> sticky footer) ========== */
     main {
       flex: 1;
       max-width: 1000px;
@@ -74,7 +74,7 @@
       margin: 20px 0;
     }
 
-    /* ---------- Card Layout for sections ---------- */
+    /* ========== Card Layout ========== */
     .card-container {
       display: flex;
       flex-wrap: wrap;
@@ -105,7 +105,7 @@
     .card a {
       display: inline-block;
       padding: 8px 15px;
-      background-color: #ffccd5; /* Pink button */
+      background-color: #ffccd5; /* Pink */
       color: #333;
       border-radius: 5px;
       text-decoration: none;
@@ -116,15 +116,17 @@
       color: #fff;
     }
 
-    /* ---------- Footer ---------- */
+    /* ========== Footer ========== */
     footer {
       background-color: #ffccd5;
       text-align: center;
       padding: 15px;
     }
 
-    /* ========== AI Toggle Button ========== */
-    .ai-toggle-btn {
+    /****************************************
+     *  AI Button (bottom-left corner)      *
+     ****************************************/
+    .ai-btn {
       position: fixed;
       bottom: 30px;
       left: 30px;
@@ -140,60 +142,56 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
       transition: background-color 0.3s;
     }
-    .ai-toggle-btn:hover {
+    .ai-btn:hover {
       background-color: #ff2f59;
     }
 
-    /* ========== Chat Panel ========== */
-    .ai-panel {
+    /****************************************
+     *  Chat Box (hidden initially)         *
+     ****************************************/
+    .ai-chat {
+      display: none;       /* 初始不显示 */
       position: fixed;
-      top: 80px; /* 调整此值让它别挡住header或nav */
-      left: -320px; /* 初始隐藏在屏幕左外 */
-      width: 320px;
-      height: 400px; 
+      bottom: 90px;        /* 离底部留一些空间 */
+      left: 30px;          /* 左边固定 */
+      width: 320px;        /* 默认宽 */
+      height: 320px;       /* 默认高 */
       background-color: #ffffff;
+      border: 1px solid #ccc;
       border-radius: 8px;
       box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-      padding: 10px;
       z-index: 9998;
-      transition: left 0.4s ease;
       display: flex;
       flex-direction: column;
-    }
-    .ai-panel.show {
-      left: 30px; /* 点击后滑出到left=30px */
+
+      /* 可缩放 */
+      resize: both;
+      overflow: auto;
     }
 
-    .ai-panel-header {
+    .ai-header {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-      margin-bottom: 5px;
+      background-color: #ffe5ec;
+      padding: 5px 0;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
     }
-    .ai-panel-title {
+    .ai-header h3 {
       margin: 0;
       color: #ff5678;
-    }
-    .ai-panel-close {
-      background: transparent;
-      border: none;
-      font-size: 1.2em;
-      cursor: pointer;
-      color: #999;
-    }
-    .ai-panel-close:hover {
-      color: #333;
+      font-size: 1.1em;
     }
 
     .ai-log {
       flex: 1;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      overflow-y: auto;
       padding: 5px;
-      background-color: #f9f9f9;
+      overflow-y: auto;
       font-size: 0.9em;
-      margin-bottom: 5px;
+      background-color: #f9f9f9;
+      border-top: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
     }
     .ai-message-user {
       color: #333;
@@ -202,12 +200,14 @@
     .ai-message-assistant {
       color: #004085;
       margin: 3px 0;
-      white-space: pre-wrap; /* 保留换行 */
+      white-space: pre-wrap;
     }
 
-    .ai-input-container {
+    .ai-input-area {
       display: flex;
       gap: 5px;
+      padding: 5px;
+      align-items: center;
     }
     .ai-input {
       flex: 1;
@@ -215,7 +215,7 @@
       border-radius: 5px;
       border: 1px solid #ccc;
     }
-    .ai-submit {
+    .ai-send {
       padding: 6px 12px;
       border: none;
       border-radius: 5px;
@@ -224,14 +224,13 @@
       cursor: pointer;
       transition: background-color 0.3s;
     }
-    .ai-submit:hover {
+    .ai-send:hover {
       background-color: #ff5678;
       color: #fff;
     }
   </style>
 </head>
 <body>
-
   <!-- ========== Header ========== -->
   <header>
     <h1>Never Let Me Go - Overview</h1>
@@ -245,24 +244,22 @@
     <a href="themes.html">Themes</a>
     <a href="question-part.html">Question Part</a>
     <a href="important-moments.html">Important Moments</a>
-    <a href="additional_sections.html">Additional Sections</a> 
+    <a href="additional_sections.html">Additional Sections</a>
   </nav>
 
-  <!-- ========== Main Content ========== -->
+  <!-- ========== Main ========== -->
   <main>
     <section class="intro">
       <h2>Welcome to the Never Let Me Go Study Notes</h2>
       <p>
-        This site provides an in-depth look at the novel <em>Never Let Me Go</em>, including 
+        This site provides an in-depth look at the novel <em>Never Let Me Go</em>, including
         setting details, character analysis, themes, and discussion questions.
         Click on any section below to explore more specific content about the novel.
       </p>
     </section>
 
     <div class="banner">
-      <!-- If needed:
-           <img src="images/banner.jpg" alt="Banner" width="70%" />
-      -->
+      <!-- if needed: <img src="images/banner.jpg" alt="Banner" width="70%" /> -->
     </div>
 
     <section class="card-container">
@@ -309,7 +306,7 @@
       <div class="card">
         <h2>Additional Sections</h2>
         <p>
-          Extra analyses, symbols, and extended content about the novel, 
+          Extra analyses, symbols, and extended content about the novel,
           offering deeper insights and broader exploration.
         </p>
         <a href="additional_sections.html">Read More</a>
@@ -322,48 +319,44 @@
     <p>Created by Joe's group</p>
   </footer>
 
-  <!-- ========== Floating AI Button ========== -->
-  <button class="ai-toggle-btn" id="ai-toggle-btn">AI</button>
+  <!-- ========== AI Toggle Button ========== -->
+  <button class="ai-btn" id="ai-btn">AI</button>
 
-  <!-- ========== Chat Panel (Initially Hidden) ========== -->
-  <div class="ai-panel" id="ai-panel">
-    <div class="ai-panel-header">
-      <h3 class="ai-panel-title">AI Chat</h3>
-      <button class="ai-panel-close" id="ai-close-btn">&times;</button>
+  <!-- ========== Chat Box (Resizable) ========== -->
+  <div class="ai-chat" id="ai-chat">
+    <div class="ai-header">
+      <h3>AI Chat</h3>
     </div>
-    <div class="ai-log" id="ai-log"></div>
-    <div class="ai-input-container">
-      <input type="text" class="ai-input" id="ai-input" placeholder="Ask something...">
-      <button class="ai-submit" id="ai-submit">Send</button>
+    <div class="ai-log" id="ai-log">
+      <!-- Messages appended here -->
+    </div>
+    <div class="ai-input-area">
+      <input type="text" class="ai-input" id="ai-input" placeholder="Ask...">
+      <button class="ai-send" id="ai-send">Send</button>
     </div>
   </div>
 
   <script>
     /***********************************************
-     *        1) Toggle Chat Panel Visibility      *
+     *        1) Toggle Chat Box Visibility        *
      ***********************************************/
-    const aiToggleBtn = document.getElementById('ai-toggle-btn');
-    const aiPanel = document.getElementById('ai-panel');
-    const aiCloseBtn = document.getElementById('ai-close-btn');
+    const aiBtn    = document.getElementById('ai-btn');
+    const aiChat   = document.getElementById('ai-chat');
+    let isChatOpen = false;
 
-    // 点击 AI 按钮 => 展开面板
-    aiToggleBtn.addEventListener('click', () => {
-      aiPanel.classList.add('show');
-    });
-
-    // 关闭按钮 => 收回面板
-    aiCloseBtn.addEventListener('click', () => {
-      aiPanel.classList.remove('show');
+    aiBtn.addEventListener('click', () => {
+      // 如果是隐藏 -> 显示；如果是显示 -> 隐藏
+      isChatOpen = !isChatOpen;
+      aiChat.style.display = isChatOpen ? 'block' : 'none';
     });
 
     /***********************************************
-     *        2) ChatGPT API (api.openai-hk.com)   *
+     *        2) ChatGPT HK API Calls             *
      ***********************************************/
-    // 请自行替换为你的 key
-    const OPENAI_API_KEY = "hk-q0fzaf1000040746c0f6906bb53e99da2f2e667e9e53b46b";
-    const OPENAI_API_URL = "https://api.openai-hk.com";
+    const OPENAI_API_KEY = "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"; // 你自己的 key
+    const OPENAI_API_URL = "https://api.openai-hk.com/v1/chat/completions";
 
-    // 用于记录多轮对话上下文
+    // 对话上下文
     let messages = [
       {
         role: "system",
@@ -371,42 +364,39 @@
       }
     ];
 
-    const aiLog = document.getElementById("ai-log");
-    const aiInput = document.getElementById("ai-input");
-    const aiSubmit = document.getElementById("ai-submit");
+    const aiLog   = document.getElementById('ai-log');
+    const aiInput = document.getElementById('ai-input');
+    const aiSend  = document.getElementById('ai-send');
 
-    // 点击 send
-    aiSubmit.addEventListener('click', sendMessage);
-    // 回车发送
-    aiInput.addEventListener('keydown', function(e){
-      if(e.key === 'Enter'){
+    // 点击发送
+    aiSend.addEventListener('click', sendMessage);
+    // 回车发送并清空
+    aiInput.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter') {
         sendMessage();
       }
     });
 
-    // 发送用户输入
     function sendMessage(){
       const userText = aiInput.value.trim();
       if(!userText) return;
 
       // 显示用户消息
-      appendMessage("user", userText);
+      appendMessage('user', userText);
 
-      // 加入 messages
+      // 加到 messages
       messages.push({ role: "user", content: userText });
 
       // 清空输入框
       aiInput.value = "";
 
-      // 调用 ChatGPT
+      // 调用ChatGPT
       callChatAPI();
     }
 
-    // 调用 ChatGPT (HK API)
     async function callChatAPI(){
       try {
-        // 按你给的参数
-        let requestData = {
+        const requestData = {
           max_tokens: 1200,
           model: "gpt-3.5-turbo",
           temperature: 0.8,
@@ -429,33 +419,29 @@
         }
 
         let data = await response.json();
-        // data => { choices: [ { message: { content: ... } } ], ...}
         let assistantMsg = data.choices[0].message.content;
 
-        // 推到 messages
+        // 追加到对话
         messages.push({ role: "assistant", content: assistantMsg });
-        // 显示到对话区
-        appendMessage("assistant", assistantMsg);
+        appendMessage('assistant', assistantMsg);
 
-      } catch (err) {
+      } catch(err) {
         console.error(err);
-        appendMessage("assistant", "Error: " + err.message);
+        appendMessage('assistant', "Error: " + err.message);
       }
     }
 
-    // 在日志中添加一条消息
     function appendMessage(role, text){
-      let p = document.createElement('p');
-      if(role === "user"){
-        p.className = "ai-message-user";
-        p.textContent = "You: " + text;
+      const p = document.createElement('p');
+      if(role === 'user'){
+        p.className = 'ai-message-user';
+        p.textContent = 'You: ' + text;
       } else {
-        p.className = "ai-message-assistant";
-        p.textContent = "AI: " + text;
+        p.className = 'ai-message-assistant';
+        p.textContent = 'AI: ' + text;
       }
       aiLog.appendChild(p);
-      // 滚动到底
-      aiLog.scrollTop = aiLog.scrollHeight;
+      aiLog.scrollTop = aiLog.scrollHeight; // 滚动到底
     }
   </script>
 </body>
