@@ -1,551 +1,522 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>A Digital Journey into <i>Never Let Me Go</i></title>
-    <style>
-        /* ========== Global Reset & Full Height ========== */
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow-x: hidden; /* 避免横向滚动条 */
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>A Digital Journey into <i>Never Let Me Go</i></title>
+  <style>
+    /* ========== Global Reset & Full Height ========== */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow-x: hidden; /* 避免横向滚动条 */
+    }
 
-        /* ========== Flexbox Sticky Footer Setup ========== */
-        body {
-            display: flex;
-            flex-direction: column;
-            font-family: 'Times New Roman', serif;
-            background-color: #e3f6f5; /* Tiffany Blue */
-            color: #333;
-        }
+    /* ========== Flexbox Sticky Footer Setup ========== */
+    body {
+      display: flex;
+      flex-direction: column;
+      font-family: 'Times New Roman', serif;
+      background-color: #e3f6f5; /* Tiffany Blue */
+      color: #333;
+    }
 
-        /* ========== Header ========== */
-        header {
-            background-color: #ffccd5; /* Pink */
-            text-align: center;
-            padding: 30px 20px;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2em;
-        }
+    /* ========== Header ========== */
+    header {
+      background-color: #ffccd5; /* Pink */
+      text-align: center;
+      padding: 30px 20px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
 
-        /* ========== Navigation (Nav) ========== */
-        nav {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            background-color: #ffe5ec; /* Lighter Pink */
-            padding: 10px;
-        }
-        nav a {
-            color: #333;
-            text-decoration: none;
-            background-color: #e3f6f5; /* Tiffany Blue */
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        nav a:hover {
-            background-color: #bde0fe; /* Lighter Blue on Hover */
-        }
+    /* ========== Navigation (Nav) ========== */
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      background-color: #ffe5ec; /* Lighter Pink */
+      padding: 10px;
+    }
+    nav a {
+      color: #333;
+      text-decoration: none;
+      background-color: #e3f6f5; /* Tiffany Blue */
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    nav a:hover {
+      background-color: #bde0fe; /* Lighter Blue on Hover */
+    }
 
-        /* ========== Main (Flex:1 -> sticky footer) ========== */
-        main {
-            flex: 1;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .intro {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .intro p {
-            margin: 0 auto;
-            max-width: 700px;
-            line-height: 1.6;
-        }
-        .banner {
-            text-align: center;
-            margin: 20px 0;
-        }
+    /* ========== Main (Flex:1 -> sticky footer) ========== */
+    main {
+      flex: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .intro {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .intro p {
+      margin: 0 auto;
+      max-width: 700px;
+      line-height: 1.6;
+    }
+    .banner {
+      text-align: center;
+      margin: 20px 0;
+    }
 
-        /* ========== Card Layout ========== */
-        .card-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-        .card {
-            width: 280px;
-            background-color: #ffffff; /* White */
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            padding: 20px;
-            text-align: center;
-            transition: transform 0.2s;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-        }
-        .card h2 {
-            color: #ff5678; /* Deep Pink */
-            margin-bottom: 10px;
-        }
-        .card p {
-            font-size: 0.95em;
-            line-height: 1.5;
-            margin-bottom: 15px;
-        }
-        .card a {
-            display: inline-block;
-            padding: 8px 15px;
-            background-color: #ffccd5; /* Pink button */
-            color: #333;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-        .card a:hover {
-            background-color: #ff5678;
-            color: #fff;
-        }
+    /* ========== Card Layout ========== */
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .card {
+      width: 280px;
+      background-color: #ffffff; /* White */
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card h2 {
+      color: #ff5678; /* Deep Pink */
+      margin-bottom: 10px;
+    }
+    .card p {
+      font-size: 0.95em;
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+    .card a {
+      display: inline-block;
+      padding: 8px 15px;
+      background-color: #ffccd5; /* Pink button */
+      color: #333;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+    .card a:hover {
+      background-color: #ff5678;
+      color: #fff;
+    }
 
-        /* ========== Footer ========== */
-        footer {
-            background-color: #ffccd5;
-            text-align: center;
-            padding: 15px;
-        }
+    /* ========== Footer ========== */
+    footer {
+      background-color: #ffccd5;
+      text-align: center;
+      padding: 15px;
+    }
 
-        /* ========== AI Button ========== */
-        .ai-btn {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            border: none;
-            color: #fff;
-            font-size: 1.4em;
-            cursor: pointer;
-            z-index: 9999;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            /* 新增渐变背景 + 简单图标 */
-            background: linear-gradient(135deg, #ff5678, #ff8090);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-        .ai-btn::before {
-            content: "💬"; /* 你可换个emoji或SVG图标 */
-        }
-        .ai-btn:hover {
-            transform: scale(1.08);
-            box-shadow: 0 2px 12px rgba(255,0,80,0.3);
-        }
+    /* ========== AI Button ========== */
+    .ai-btn {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      border: none;
+      color: #fff;
+      font-size: 1.4em;
+      cursor: pointer;
+      z-index: 9999;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 
-        /* ========== Chat Box (initially hidden) ========== */
-        .ai-chat {
-            position: fixed;
-            bottom: 100px;
-            left: 30px;
-            width: 320px;
-            height: 320px;
-            background-color: #ffffff;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-            z-index: 9998;
-            display: flex;
-            flex-direction: column;
-            resize: none;
-            overflow: hidden;
-            /* 淡入淡出动画：初始隐藏 opacity=0 */
-            opacity: 0;
-            pointer-events: none; /* 避免隐藏时点击事件 */
-            transition: opacity 0.3s ease;
-        }
-        /* 用 .show 来控制显示 */
-        .ai-chat.show {
-            opacity: 1;
-            pointer-events: auto;
-        }
+      /* 新增渐变背景 + 简单图标 */
+      background: linear-gradient(135deg, #ff5678, #ff8090);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    .ai-btn::before {
+      content: "💬"; /* 你可换个emoji或SVG图标 */
+    }
+    .ai-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 2px 12px rgba(255,0,80,0.3);
+    }
 
-        .ai-header {
-            text-align: center;
-            background-color: #ffe5ec;
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
-            padding: 5px 0;
-            border-bottom: 1px solid #ddd;
-        }
-        .ai-header h3 {
-            margin: 0;
-            color: #ff5678;
-            font-size: 1.1em;
-        }
+    /* ========== Chat Box (initially hidden) ========== */
+    .ai-chat {
+      position: fixed;
+      bottom: 100px;
+      left: 30px;
+      width: 320px;
+      height: 320px;
+      background-color: #ffffff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+      z-index: 9998;
+      display: flex;
+      flex-direction: column;
+      resize: none;
+      overflow: hidden;
 
-        .ai-log {
-            flex: 1;
-            padding: 8px;
-            overflow-y: auto;
-            font-size: 0.9em;
-            background-color: #fcfcfc;
-        }
-        .ai-message-user {
-            color: #333;
-            margin: 3px 0;
-        }
-        .ai-message-assistant {
-            color: #004085;
-            margin: 3px 0;
-            white-space: pre-wrap;
-        }
+      /* 淡入淡出动画：初始隐藏 opacity=0 */
+      opacity: 0;
+      pointer-events: none; /* 避免隐藏时点击事件 */
+      transition: opacity 0.3s ease; 
+    }
+    /* 用 .show 来控制显示 */
+    .ai-chat.show {
+      opacity: 1;
+      pointer-events: auto; 
+    }
 
-        .ai-input-container {
-            display: flex;
-            padding: 5px;
-            gap: 5px;
-            align-items: center;
-            border-top: 1px solid #ddd;
-        }
-        .ai-input {
-            flex: 1;
-            padding: 6px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-        .ai-submit {
-            padding: 6px 12px;
-            border: none;
-            border-radius: 5px;
-            background-color: #ffccd5;
-            color: #333;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .ai-submit:hover {
-            background-color: #ff5678;
-            color: #fff;
-        }
+    .ai-header {
+      text-align: center;
+      background-color: #ffe5ec;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      padding: 5px 0;
+      border-bottom: 1px solid #ddd;
+    }
+    .ai-header h3 {
+      margin: 0;
+      color: #ff5678;
+      font-size: 1.1em;
+    }
 
-        /* ========== Resize Handle (bottom-right corner) ========== */
-        .ai-resize-handle {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            right: 0;
-            bottom: 0;
-            cursor: nwse-resize;
-            z-index: 10;
-            /* 美化：一个半透明的小三角 */
-            background:  linear-gradient(135deg, transparent 50%, rgba(0,0,0,0.2) 50%) no-repeat center/100% 100%;
-        }
-    </style>
-    <!-- 引入 Axios -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    .ai-log {
+      flex: 1;
+      padding: 8px;
+      overflow-y: auto;
+      font-size: 0.9em;
+      background-color: #fcfcfc;
+    }
+    .ai-message-user {
+      color: #333;
+      margin: 3px 0;
+    }
+    .ai-message-assistant {
+      color: #004085;
+      margin: 3px 0;
+      white-space: pre-wrap;
+    }
+
+    .ai-input-container {
+      display: flex;
+      padding: 5px;
+      gap: 5px;
+      align-items: center;
+      border-top: 1px solid #ddd;
+    }
+    .ai-input {
+      flex: 1;
+      padding: 6px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .ai-submit {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 5px;
+      background-color: #ffccd5;
+      color: #333;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .ai-submit:hover {
+      background-color: #ff5678;
+      color: #fff;
+    }
+
+    /* ========== Resize Handle (bottom-right corner) ========== */
+    .ai-resize-handle {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      right: 0;
+      bottom: 0;
+      cursor: nwse-resize;
+      z-index: 10;
+
+      /* 美化：一个半透明的小三角 */
+      background: 
+        linear-gradient(135deg, transparent 50%, rgba(0,0,0,0.2) 50%) no-repeat center/100% 100%;
+    }
+  </style>
 </head>
 <body>
-    <!-- ========== Header ========== -->
-    <header>
-        <h1>Never Let Me Go - Overview</h1>
-    </header>
 
-    <!-- ========== Nav ========== -->
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="setting.html">Setting</a>
-        <a href="characters.html">Characters</a>
-        <a href="themes.html">Themes</a>
-        <a href="question-part.html">Question Part</a>
-        <a href="important-moments.html">Important Moments</a>
-        <a href="additional_sections.html">Additional Sections</a>
-    </nav>
+  <!-- ========== Header ========== -->
+  <header>
+    <h1>Never Let Me Go - Overview</h1>
+  </header>
 
-    <!-- ========== Main ========== -->
-    <main>
-        <section class="intro">
-            <h2>Welcome to the Never Let Me Go Study Notes</h2>
-            <p>
-                This site provides an in-depth look at the novel <em>Never Let Me Go</em>, including
-                setting details, character analysis, themes, and discussion questions.
-                Click on any section below to explore more specific content about the novel.
-            </p>
-        </section>
+  <!-- ========== Nav ========== -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="setting.html">Setting</a>
+    <a href="characters.html">Characters</a>
+    <a href="themes.html">Themes</a>
+    <a href="question-part.html">Question Part</a>
+    <a href="important-moments.html">Important Moments</a>
+    <a href="additional_sections.html">Additional Sections</a>
+  </nav>
 
-        <div class="banner">
-            <!-- if needed <img src="images/banner.jpg" alt="Banner" width="70%" /> -->
-        </div>
+  <!-- ========== Main ========== -->
+  <main>
+    <section class="intro">
+      <h2>Welcome to the Never Let Me Go Study Notes</h2>
+      <p>
+        This site provides an in-depth look at the novel <em>Never Let Me Go</em>, including
+        setting details, character analysis, themes, and discussion questions.
+        Click on any section below to explore more specific content about the novel.
+      </p>
+    </section>
 
-        <section class="card-container">
-            <div class="card">
-                <h2>Setting</h2>
-                <p>
-                    Explore the environment of Hailsham School and the broader society in which the story takes place.
-                </p>
-                <a href="setting.html">Read More</a>
-            </div>
-
-            <div class="card">
-                <h2>Characters</h2>
-                <p>
-                    Meet Kathy, Tommy, Ruth, and other figures who shape the narrative through their hopes and conflicts.
-                </p>
-                <a href="characters.html">Read More</a>
-            </div>
-
-            <div class="card">
-                <h2>Themes</h2>
-                <p>
-                    Delve into key ideas of memory, identity, and human dignity woven throughout the novel.
-                </p>
-                <a href="themes.html">Read More</a>
-            </div>
-
-            <div class="card">
-                <h2>Question Part</h2>
-                <p>
-                    Chapter-by-chapter questions designed to spark deeper understanding and critical thinking.
-                </p>
-                <a href="question-part.html">Read More</a>
-            </div>
-
-            <div class="card">
-                <h2>Important Moments</h2>
-                <p>
-                    Highlights of pivotal scenes and turning points that drive the storyline forward.
-                </p>
-                <a href="important-moments.html">Read More</a>
-            </div>
-
-            <div class="card">
-                <h2>Additional Sections</h2>
-                <p>
-                    Extra analyses, symbols, and extended content about the novel,
-                    offering deeper insights and broader exploration.
-                </p>
-                <a href="additional_sections.html">Read More</a>
-            </div>
-        </section>
-    </main>
-
-    <!-- ========== Footer ========== -->
-    <footer>
-        <p>Created by Joe's group</p>
-    </footer>
-
-    <!-- ========== AI Button ========== -->
-    <button class="ai-btn" id="ai-btn"></button>
-
-    <!-- ========== Chat Box (with ratio-based resizing & fade) ========== -->
-    <div class="ai-chat" id="ai-chat">
-        <div class="ai-header">
-            <h3>AI Chat</h3>
-        </div>
-        <div class="ai-log" id="ai-log"></div>
-        <div class="ai-input-container">
-            <input type="text" class="ai-input" id="ai-input" placeholder="Ask anything...">
-            <button class="ai-submit" id="ai-submit">Send</button>
-        </div>
-        <div class="ai-resize-handle" id="ai-resize-handle"></div>
+    <div class="banner">
+      <!-- if needed <img src="images/banner.jpg" alt="Banner" width="70%" /> -->
     </div>
 
-    <script>
-        // Toggle Chat Box with fade in/out
-        const aiBtn = document.getElementById('ai-btn');
-        const aiChat = document.getElementById('ai-chat');
-        let chatOpen = false;
+    <section class="card-container">
+      <div class="card">
+        <h2>Setting</h2>
+        <p>
+          Explore the environment of Hailsham School and the broader society in which the story takes place.
+        </p>
+        <a href="setting.html">Read More</a>
+      </div>
 
-        aiBtn.addEventListener('click', () => {
-            chatOpen = !chatOpen;
-            if(chatOpen) {
-                aiChat.classList.add('show');
-            } else {
-                aiChat.classList.remove('show');
-            }
-        });
+      <div class="card">
+        <h2>Characters</h2>
+        <p>
+          Meet Kathy, Tommy, Ruth, and other figures who shape the narrative through their hopes and conflicts.
+        </p>
+        <a href="characters.html">Read More</a>
+      </div>
 
-        // 修改后的AI调用部分（使用你的API端点）
-        const chatGPT = (msg, opt) => {
-            const dataPar = (data) => {
-                let rz = {};
-                let dz = data.split('data:', 2);
-                const str = dz[1].trim();
-                if (str === '[DONE]') {
-                    rz = { finish: true, text: '' };
-                } else {
-                    rz = JSON.parse(str);
-                    rz.text = rz.choices[0].delta.content || '';
-                }
-                return rz;
-            };
+      <div class="card">
+        <h2>Themes</h2>
+        <p>
+          Delve into key ideas of memory, identity, and human dignity woven throughout the novel.
+        </p>
+        <a href="themes.html">Read More</a>
+      </div>
 
-            const dd = (data) => {
-                let arr = data.trim().split("\n\n");
-                let rz = { text: '', arr: [] };
-                const atext = arr.map(v => {
-                    const aa = dataPar(v);
-                    return aa.text;
-                });
-                rz.arr = atext;
-                rz.text = atext.join("");
-                if (opt.onMessage) opt.onMessage(rz);
-                return rz;
-            };
+      <div class="card">
+        <h2>Question Part</h2>
+        <p>
+          Chapter-by-chapter questions designed to spark deeper understanding and critical thinking.
+        </p>
+        <a href="question-part.html">Read More</a>
+      </div>
 
-            return new Promise((resolve, reject) => {
-                axios({
-                    method: 'post',
-                    url: 'https://api.openai-hk.com/v1/chat/completions',
-                    data: {
-                        "max_tokens": 1200,
-                        "model": "gpt-3.5-turbo",
-                        "temperature": 0.8,
-                        "top_p": 1,
-                        "presence_penalty": 1,
-                        "messages": [
-                            { "role": "system", "content": opt.system ?? "You are a digital teacher on a website about the book never let me go" },
-                            { "role": "user", "content": msg }
-                        ],
-                        "stream": true
-                    },
-                    headers: {
-                        'Content-Type':'application/json',
-                        'Authorization': 'hk-q0fz'
-                    },
-                    onDownloadProgress: e => {
-                        const xhr = e.currentTarget || e.target;
-                        if (xhr && xhr.responseText) {
-                            dd(xhr.responseText);
-                        }
-                    }
-                })
-                .then(d => resolve(dd(d.data)))
-                .catch(e => reject(e));
-            });
+      <div class="card">
+        <h2>Important Moments</h2>
+        <p>
+          Highlights of pivotal scenes and turning points that drive the storyline forward.
+        </p>
+        <a href="important-moments.html">Read More</a>
+      </div>
+
+      <div class="card">
+        <h2>Additional Sections</h2>
+        <p>
+          Extra analyses, symbols, and extended content about the novel,
+          offering deeper insights and broader exploration.
+        </p>
+        <a href="additional_sections.html">Read More</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== Footer ========== -->
+  <footer>
+    <p>Created by Joe's group</p>
+  </footer>
+
+  <!-- ========== AI Button ========== -->
+  <button class="ai-btn" id="ai-btn"></button>
+
+  <!-- ========== Chat Box (with ratio-based resizing & fade) ========== -->
+  <div class="ai-chat" id="ai-chat">
+    <div class="ai-header">
+      <h3>AI Chat</h3>
+    </div>
+    <div class="ai-log" id="ai-log"></div>
+    <div class="ai-input-container">
+      <input type="text" class="ai-input" id="ai-input" placeholder="Ask anything...">
+      <button class="ai-submit" id="ai-submit">Send</button>
+    </div>
+    <div class="ai-resize-handle" id="ai-resize-handle"></div>
+  </div>
+
+  <script>
+    /***************************************************
+     * 1) Toggle Chat Box with fade in/out             *
+     ***************************************************/
+    const aiBtn  = document.getElementById('ai-btn');
+    const aiChat = document.getElementById('ai-chat');
+    let chatOpen = false;
+
+    aiBtn.addEventListener('click', () => {
+      chatOpen = !chatOpen;
+      if(chatOpen) {
+        aiChat.classList.add('show'); 
+      } else {
+        aiChat.classList.remove('show');
+      }
+    });
+
+    /***************************************************
+     * 2) Call Official OpenAI (api.openai.com)        *
+     ***************************************************/
+    // 填入你可用的官方Key，如果仍报401说明Key或权限有问题
+    const OPENAI_API_KEY = "sk-xxxxxxx";
+    const OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
+
+    let messages = [
+      {
+        role: "system",
+        content: "You are ChatGPT, a large language model trained by OpenAI. Answer as concisely as possible."
+      }
+    ];
+
+    const aiLog   = document.getElementById('ai-log');
+    const aiInput = document.getElementById('ai-input');
+    const aiSubmit= document.getElementById('ai-submit');
+
+    aiSubmit.addEventListener('click', sendMessage);
+    aiInput.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter') {
+        sendMessage();
+      }
+    });
+
+    function sendMessage(){
+      const userText = aiInput.value.trim();
+      if(!userText) return;
+
+      appendMessage('user', userText);
+      messages.push({ role: "user", content: userText });
+      aiInput.value = "";
+
+      callChatAPI();
+    }
+
+    async function callChatAPI(){
+      try {
+        const requestData = {
+          max_tokens: 1200,
+          model: "gpt-3.5-turbo",
+          temperature: 0.8,
+          top_p: 1,
+          presence_penalty: 1,
+          messages: messages
         };
 
-        // 修改后的消息处理逻辑
-        let messages = [];
-        const aiLog = document.getElementById('ai-log');
-        const aiInput = document.getElementById('ai-input');
-        const aiSubmit = document.getElementById('ai-submit');
-
-        aiSubmit.addEventListener('click', handleSubmit);
-        aiInput.addEventListener('keydown', (e) => {
-            if(e.key === 'Enter') handleSubmit();
+        let res = await fetch(OPENAI_API_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${OPENAI_API_KEY}`
+          },
+          body: JSON.stringify(requestData)
         });
 
-        function handleSubmit() {
-            const content = aiInput.value.trim();
-            if (!content) return;
-
-            // 添加用户消息
-            appendMessage('user', content);
-            messages.push({ role: "user", content });
-            aiInput.value = "";
-
-            // 调用API
-            chatGPT(content, {
-                system: "You are a literature assistant specialized in analyzing 'Never Let Me Go'",
-                onMessage: (rz) => {
-                    if (rz.text) {
-                        updateAssistantMessage(rz.text);
-                    }
-                }
-            })
-            .then(d => {
-                if (!d.text?.trim()) {
-                    appendMessage('assistant', "No valid response received");
-                }
-                messages.push({ role: "assistant", content: d.text });
-            })
-            .catch(err => {
-                console.error(err);
-                appendMessage('assistant', "Error: " + err.message);
-            });
+        if(!res.ok){
+          throw new Error("API request failed, code: " + res.status);
         }
 
-        // 更新消息显示
-        function appendMessage(role, text) {
-            const p = document.createElement('p');
-            p.className = role === 'user' ? 'ai-message-user' : 'ai-message-assistant';
-            p.textContent = `${role === 'user' ? 'You: ' : 'AI: '}${text}`;
-            aiLog.appendChild(p);
-            aiLog.scrollTop = aiLog.scrollHeight;
-        }
+        let data = await res.json();
+        let assistantMsg = data.choices[0].message.content;
+        messages.push({ role: "assistant", content: assistantMsg });
+        appendMessage('assistant', assistantMsg);
 
-        let currentAssistantMessage = '';
-        function updateAssistantMessage(text) {
-            const lastMsg = aiLog.lastElementChild;
-            if (lastMsg && lastMsg.className === 'ai-message-assistant') {
-                lastMsg.textContent = 'AI: ' + text;
-            } else {
-                appendMessage('assistant', text);
-            }
-        }
+      } catch(err){
+        console.error(err);
+        appendMessage('assistant', "Error: " + err.message);
+      }
+    }
 
-        // Maintain 1:1 aspect ratio while resizing
-        const aiResizeHandle = document.getElementById('ai-resize-handle');
+    function appendMessage(role, text){
+      let p = document.createElement('p');
+      if(role === 'user'){
+        p.className = 'ai-message-user';
+        p.textContent = 'You: ' + text;
+      } else {
+        p.className = 'ai-message-assistant';
+        p.textContent = 'AI: ' + text;
+      }
+      aiLog.appendChild(p);
+      aiLog.scrollTop = aiLog.scrollHeight;
+    }
 
-        let startWidth = 320;
-        let startHeight = 320;
-        let ratio = 1.0; // 320/320
+    /***************************************************
+     * 3) Maintain 1:1 aspect ratio while resizing     *
+     ***************************************************/
+    const aiResizeHandle = document.getElementById('ai-resize-handle');
 
-        let startMouseX, startMouseY;
-        let resizing = false;
+    let startWidth  = 320;
+    let startHeight = 320;
+    let ratio       = 1.0; // 320/320
 
-        aiResizeHandle.addEventListener('mousedown', (e) => {
-            resizing = true;
-            startMouseX = e.clientX;
-            startMouseY = e.clientY;
-            const rect = aiChat.getBoundingClientRect();
-            startWidth = rect.width;
-            startHeight = rect.height;
-            ratio = startWidth / startHeight;
+    let startMouseX, startMouseY;
+    let resizing = false;
 
-            document.addEventListener('mousemove', onMouseMove);
-            document.addEventListener('mouseup', onMouseUp);
-            e.preventDefault();
-        });
+    aiResizeHandle.addEventListener('mousedown', (e) => {
+      resizing = true;
+      startMouseX = e.clientX;
+      startMouseY = e.clientY;
+      const rect = aiChat.getBoundingClientRect();
+      startWidth  = rect.width;
+      startHeight = rect.height;
+      ratio       = startWidth / startHeight;
 
-        function onMouseMove(e){
-            if(!resizing) return;
+      document.addEventListener('mousemove', onMouseMove);
+      document.addEventListener('mouseup', onMouseUp);
+      e.preventDefault();
+    });
 
-            const dx = e.clientX - startMouseX;
-            const dy = e.clientY - startMouseY;
+    function onMouseMove(e){
+      if(!resizing) return;
 
-            let delta = Math.abs(dx) > Math.abs(dy) ? dx : dy;
+      const dx = e.clientX - startMouseX;
+      const dy = e.clientY - startMouseY;
 
-            let newWidth = startWidth + delta;
-            let newHeight = startHeight + delta * (1/ratio);
+      let delta = Math.abs(dx) > Math.abs(dy) ? dx : dy;
 
-            const maxWidth = window.innerWidth - 30 - 50;
-            const maxHeight = window.innerHeight - 100 - 50;
+      let newWidth  = startWidth + delta;
+      let newHeight = startHeight + delta * (1/ratio);
 
-            const minSize = 150;
-            newWidth = Math.max(minSize, Math.min(newWidth, maxWidth));
-            newHeight = Math.max(minSize, Math.min(newHeight, maxHeight));
+      const maxWidth  = window.innerWidth  - 30 - 50;
+      const maxHeight = window.innerHeight - 100 - 50;
 
-            const finalSize = Math.min(newWidth, newHeight * ratio);
-            aiChat.style.width = finalSize + 'px';
-            aiChat.style.height = finalSize / ratio + 'px';
-        }
+      const minSize = 150;
+      newWidth  = Math.max(minSize, Math.min(newWidth,  maxWidth));
+      newHeight = Math.max(minSize, Math.min(newHeight, maxHeight));
 
-        function onMouseUp(e){
-            resizing = false;
-            document.removeEventListener('mousemove', onMouseMove);
-            document.removeEventListener('mouseup', onMouseUp);
-        }
-    </script>
+      const finalSize = Math.min(newWidth, newHeight * ratio);
+      aiChat.style.width  = finalSize + 'px';
+      aiChat.style.height = finalSize / ratio + 'px';
+    }
+
+    function onMouseUp(e){
+      resizing = false;
+      document.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseup', onMouseUp);
+    }
+  </script>
 </body>
 </html>
