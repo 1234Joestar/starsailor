@@ -125,135 +125,17 @@
     }
 
     /* ========== AI Button ========== */
-    .ai-btn {
-      position: fixed;
-      bottom: 30px;
-      left: 30px;
-      width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      border: none;
-      color: #fff;
-      font-size: 1.4em;
-      cursor: pointer;
-      z-index: 9999;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-
-      /* 新增渐变背景 + 简单图标 */
-      background: linear-gradient(135deg, #ff5678, #ff8090);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-    }
-    .ai-btn::before {
-      content: "💬"; /* 你可换个emoji或SVG图标 */
-    }
-    .ai-btn:hover {
-      transform: scale(1.08);
-      box-shadow: 0 2px 12px rgba(255,0,80,0.3);
+    #dify-chatbot-bubble-button {
+    background-color: #ff5678 !important;
     }
 
-    /* ========== Chat Box (initially hidden) ========== */
-    .ai-chat {
-      position: fixed;
-      bottom: 100px;
-      left: 30px;
-      width: 400px;
-      height: 400px;
-      background-color: #ffffff;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-      z-index: 9998;
-      display: flex;
-      flex-direction: column;
-      resize: none;
-      overflow: hidden;
-
-      /* 淡入淡出动画：初始隐藏 opacity=0 */
-      opacity: 0;
-      pointer-events: none; /* 避免隐藏时点击事件 */
-      transition: opacity 0.3s ease; 
-    }
-    /* 用 .show 来控制显示 */
-    .ai-chat.show {
-      opacity: 1;
-      pointer-events: auto; 
+    #dify-chatbot-bubble-window {
+    width: 20rem !important;
+    height: 35rem !important;
     }
 
-    .ai-header {
-      text-align: center;
-      background-color: #ff5678;
-      border-top-left-radius: 8px;
-      border-top-right-radius: 8px;
-      padding: 5px 0;
-      border-bottom: 1px solid #ddd;
-    }
-    .ai-header h3 {
-      margin: 0;
-      color: #ffffff;
-      font-size: 1.1em;
-    }
 
-    .ai-log {
-      flex: 1;
-      padding: 8px;
-      overflow-y: auto;
-      font-size: 0.9em;
-      background-color: #fcfcfc;
-    }
-    .ai-message-user {
-      color: #333;
-      margin: 3px 0;
-    }
-    .ai-message-assistant {
-      color: #004085;
-      margin: 3px 0;
-      white-space: pre-wrap;
-    }
-
-    .ai-input-container {
-      display: flex;
-      padding: 5px;
-      gap: 5px;
-      align-items: center;
-      border-top: 1px solid #ddd;
-    }
-    .ai-input {
-      flex: 1;
-      padding: 6px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    .ai-submit {
-      padding: 6px 12px;
-      border: none;
-      border-radius: 5px;
-      background-color: #ff5678;
-      color: #ffffff;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-    .ai-submit:hover {
-      background-color: #ff5678;
-      color: #fff;
-    }
-
-    /* ========== Resize Handle (bottom-right corner) ========== */
-    .ai-resize-handle {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      right: 0;
-      bottom: 0;
-      cursor: nwse-resize;
-      z-index: 10;
-
-      /* 美化：一个半透明的小三角 */
-      background: 
-        linear-gradient(135deg, transparent 50%, rgba(0,0,0,0.2) 50%) no-repeat center/100% 100%;
-    }
+    
   </style>
 </head>
 <body>
@@ -350,17 +232,9 @@
   <button class="ai-btn" id="ai-btn"></button>
 
   <!-- ========== Chat Box (with ratio-based resizing & fade) ========== -->
-  <div class="ai-chat" id="ai-chat">
-    <div class="ai-header">
-      <h3>AI Chat</h3>
-    </div>
-    <div class="ai-log" id="ai-log"></div>
-    <div class="ai-input-container">
-      <input type="text" class="ai-input" id="ai-input" placeholder="Ask anything...">
-      <button class="ai-submit" id="ai-submit">Send</button>
-    </div>
-    <div class="ai-resize-handle" id="ai-resize-handle"></div>
-  </div>
+
+
+  
 
   <script>
     /***************************************************
@@ -381,7 +255,7 @@
 
 
     
-<!-- ========== 388-465 ========== -->
+
 
 
   
@@ -389,89 +263,9 @@
      * 2) Call Official OpenAI (api.openai.com)        *
      ***************************************************/
     // 填入你可用的官方Key，如果仍报401说明Key或权限有问题
-    const OPENAI_API_KEY = "hk-q0fzaf1000040746c0f6906bb53e99da2f2e667e9e53b46b";
-    const OPENAI_API_URL = "https://api.openai-hk.com/v1/chat/completions";
-
-    let messages = [
-      {
-        role: "system",
-        content: "You are ChatGPT, a large language model trained by OpenAI. Answer as concisely as possible."
-      }
-    ];
-
-    const aiLog   = document.getElementById('ai-log');
-    const aiInput = document.getElementById('ai-input');
-    const aiSubmit= document.getElementById('ai-submit');
-
-    aiSubmit.addEventListener('click', sendMessage);
-    aiInput.addEventListener('keydown', (e) => {
-      if(e.key === 'Enter') {
-        sendMessage();
-      }
-    });
-
-    function sendMessage(){
-      const userText = aiInput.value.trim();
-      if(!userText) return;
-
-      appendMessage('user', userText);
-      messages.push({ role: "user", content: userText });
-      aiInput.value = "";
-
-      callChatAPI();
-    }
-
-    async function callChatAPI(){
-      try {
-        const requestData = {
-          max_tokens: 1200,
-          model: "gpt-4o",
-          temperature: 0.8,
-          top_p: 1,
-          presence_penalty: 1,
-          messages: messages
-        };
-
-        let res = await fetch(OPENAI_API_URL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${OPENAI_API_KEY}`
-          },
-          body: JSON.stringify(requestData)
-        });
-
-        if(!res.ok){
-          throw new Error("API request failed, code: " + res.status);
-        }
-
-        let data = await res.json();
-        let assistantMsg = data.choices[0].message.content;
-        messages.push({ role: "assistant", content: assistantMsg });
-        appendMessage('assistant', assistantMsg);
-
-      } catch(err){
-        console.error(err);
-        appendMessage('assistant', "Error: " + err.message);
-      }
-    }
-
-    function appendMessage(role, text){
-      let p = document.createElement('p');
-      if(role === 'user'){
-        p.className = 'ai-message-user';
-        p.textContent = 'You: ' + text;
-      } else {
-        p.className = 'ai-message-assistant';
-        p.textContent = 'AI: ' + text;
-      }
-      aiLog.appendChild(p);
-      aiLog.scrollTop = aiLog.scrollHeight;
-    }
 
     
       
-    <!-- ========== 382-465 ========== -->
 
 
 
@@ -533,5 +327,16 @@
       document.removeEventListener('mouseup', onMouseUp);
     }
   </script>
+
+<script>
+  window.difyChatbotConfig = {
+   token: '7r1Vgfi7VIQz5Ac9'
+  }
+ </script>
+ <script
+  src="https://udify.app/embed.min.js"
+  id="7r1Vgfi7VIQz5Ac9"
+  defer>
+ </script>
 </body>
 </html>
