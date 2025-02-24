@@ -7,17 +7,20 @@
   <title>Never Let Me Go - Themes</title>
   <style>
     /* ========== Global Reset & Full Height ========== */
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+    /* ========== Global Reset & Full Height ========== */
     html, body {
-      margin: 0; 
+      margin: 0;
       padding: 0;
       height: 100%;
+      overflow-x: hidden; /* 避免横向滚动条 */
     }
-    /* ========== Flexbox Sticky Footer ========== */
+    /* ========== Flexbox Sticky Footer Setup ========== */
     body {
       display: flex;
       flex-direction: column;
-      font-family: 'Times New Roman', serif;
-      background-color: #e3f6f5; /* Tiffany Blue outer */
+      font-family: 'Montserrat', sans-serif;
+      background-color: #e3f6f5; /* Tiffany Blue */
       color: #333;
     }
 
@@ -118,6 +121,32 @@
     height: 35rem !important;
     }
 
+    .part-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.part-toggle a {
+  padding: 8px 20px;
+  background-color: #ffccd5;
+  color: #333;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.part-toggle a:hover {
+  background-color: #ff5678;
+  color: #fff;
+}
+
+.part-toggle a.active {
+  background-color: #ff5678;
+  color: #fff;
+}
+
 
 
   </style>
@@ -144,17 +173,22 @@
       <button onclick="searchText()">Search</button>
     </div>
 
+    <div class="part-toggle"> 
+      <a href="themes.html" class="active">Parts 1-2</a>
+      <a href="themes-part3.html">Part 3</a>
+    </div>
+
     <!-- 白色内容容器 -->
     <div class="content-wrapper">
       <!-- 以下保留你原先的章节、题目文本 -->
       <h3>The Power of Memory</h4>
     <p>Kathy copes with the losses in her life by turning to memories of the past. She preserves the memory of Hailsham long after it has closed, just as she preserves her memories of Tommy and Ruth long after their deaths. The novel’s title epitomizes this desire to hold on. The phrase “never let me go” is somewhere between a plea and a demand, reflecting a deeply human need to hold onto, and be held by, loved ones.</p>
     <p>Kathy’s memories are her way of holding onto everyone and everything she has lost. However, Kathy’s memory is also fragmented and somewhat incomplete. Her narrative is a process of recovery and an attempt to make sense of her memories. She admits to forgetting and misremembering details, showing that memory is just as fragile as it is powerful. Her first-person narration also highlights the absence of other characters’ memories. Ruth and Tommy only appear as reflected through Kathy’s memory, which means that their own thoughts and motivations remain somewhat ambiguous.</p>
-    </hr>
+    <hr>
     <h3>The Dignity of Human Life</h3>
     <p>Kathy’s narrative is ultimately a testament to the dignity and humanity of the students whom she remembers. The students have less time than their counterparts in the outside world, but their lives are as rich with the hopes, joys, disappointments, and sorrows that define human experience.</p>
     <p>Kathy’s memories also ironize the efforts of Miss Emily and Madame to demonstrate the students’ humanity through their childhood artwork. Despite their good intentions, both Miss Emily and Madame feel revulsion towards the students whose lives they seek to improve. Kathy, meanwhile, shares the memories of her loved ones with quiet dignity and tenderness. Her narrative speaks for itself, showing the depths of her humanity in ways that Madame and Miss Emily are not capable of doing.</p>
-    </hr>
+    <hr>
       <h3>Friendships</h3>
 <p>far the biggest theme is friendship, whether it is Kathy's disapproval of Ruth's behavior or her heart-to-heart with Tommy, it is a symbol of friendship. Since arriving at the cottage, the relationship between Kathy and Ruth has become more fragile because Ruth has always wanted to make friends with the senior upperclassmen and even pretended not to know the memories of Hailsham, which completely angered Kathy. This led to a lot of arguments between them. On the other hand, Ruth seemed to be a trusted friend who would stand up for you when you needed help and also mentor you when you were in trouble. But it wasn't until an argument when Ruth attacked Kathy with a secret that Kathy had told her that she realized she couldn't talk about everything with Ruth anymore. Although they remained friends for some time, there was a rift.</p>  
 
@@ -166,7 +200,7 @@
   </main>
 
   <footer>
-    <p>Created by Joe's group</p>
+    <p>Adrift in the Ocean of Life</p>
   </footer>
 
   <script>
