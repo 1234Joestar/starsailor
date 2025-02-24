@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>A Digital Journey into <i>Never Let Me Go</i></title>
+  <title>Ocean of Never Let Me Go</i></title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
     /* ========== Global Reset & Full Height ========== */
     html, body {
       margin: 0;
@@ -12,12 +13,11 @@
       height: 100%;
       overflow-x: hidden; /* 避免横向滚动条 */
     }
-
     /* ========== Flexbox Sticky Footer Setup ========== */
     body {
       display: flex;
       flex-direction: column;
-      font-family: 'Times New Roman', serif;
+      font-family: 'Montserrat', sans-serif;
       background-color: #e3f6f5; /* Tiffany Blue */
       color: #333;
     }
@@ -83,45 +83,61 @@
       gap: 20px;
     }
     .card {
-      width: 280px;
-      background-color: #ffffff; /* White */
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      padding: 20px;
-      text-align: center;
-      transition: transform 0.2s;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-    }
-    .card h2 {
-      color: #ff5678; /* Deep Pink */
-      margin-bottom: 10px;
-    }
-    .card p {
-      font-size: 0.95em;
-      line-height: 1.5;
-      margin-bottom: 15px;
-    }
-    .card a {
-      display: inline-block;
-      padding: 8px 15px;
-      background-color: #ffccd5; /* Pink button */
-      color: #333;
-      border-radius: 5px;
-      text-decoration: none;
-      transition: background-color 0.3s;
-    }
-    .card a:hover {
-      background-color: #ff5678;
-      color: #fff;
-    }
+    width: 280px;
+    background-color: #ffffff; /* White */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 15px; /* 减少内边距 */
+    text-align: center;
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* 内容和按钮推到底部 */
+}
+
+.card h2 {
+    color: #ff5678; /* Deep Pink */
+    margin-bottom: 5px; /* 减少标题和描述间的间距 */
+    font-size: 1.2em;
+    line-height: 1.2;
+}
+
+.card p {
+    font-size: 0.95em;
+    line-height: 1.5;
+    margin-bottom: 10px; /* 减少描述和按钮间的间距 */
+    max-height: 4.5em; /* 限制文本为3行 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    /* -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical; */
+}
+
+.card a {
+    margin-top: 10px; /* 固定按钮和内容间的间距 */
+    padding: 8px 15px;
+    background-color: #ffccd5; /* Pink button */
+    color: #333;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    height: 36px; /* 固定按钮高度 */
+    line-height: 36px; /* 确保文本垂直居中 */
+}
+
+.card a:hover {
+    background-color: #ff5678;
+    color: #fff;
+}
 
     /* ========== Footer ========== */
     footer {
       background-color: #ffccd5;
       text-align: center;
-      padding: 15px;
+      /* padding: 3px; */
+      
+      margin: 0;
     }
 
     /* ========== AI Button ========== */
@@ -225,11 +241,10 @@
 
   <!-- ========== Footer ========== -->
   <footer>
-    <p>Created by The group OceanNexus</p>
+    <p>Adrift in the Ocean of Life</p>
   </footer>
 
   <!-- ========== AI Button ========== -->
-  <button class="ai-btn" id="ai-btn"></button>
 
   <!-- ========== Chat Box (with ratio-based resizing & fade) ========== -->
 
