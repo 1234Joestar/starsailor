@@ -6,17 +6,20 @@
   <title>Additional Sections - Never Let Me Go</title>
   <style>
     /* ========== Global Reset & Full Height ========== */
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+    /* ========== Global Reset & Full Height ========== */
     html, body {
-      margin: 0; 
+      margin: 0;
       padding: 0;
       height: 100%;
+      overflow-x: hidden; /* 避免横向滚动条 */
     }
-    /* ========== Flexbox Sticky Footer ========== */
+    /* ========== Flexbox Sticky Footer Setup ========== */
     body {
       display: flex;
       flex-direction: column;
-      font-family: 'Times New Roman', serif;
-      background-color: #e3f6f5; 
+      font-family: 'Montserrat', sans-serif;
+      background-color: #e3f6f5; /* Tiffany Blue */
       color: #333;
     }
 
@@ -117,11 +120,38 @@
     }
 
 
+    .part-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.part-toggle a {
+  padding: 8px 20px;
+  background-color: #ffccd5;
+  color: #333;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.part-toggle a:hover {
+  background-color: #ff5678;
+  color: #fff;
+}
+
+.part-toggle a.active {
+  background-color: #ff5678;
+  color: #fff;
+}
+
+
   </style>
 </head>
 <body>
   <header>
-    <h1>Additional Sections - Never Let Me Go</h1>
+    <h1>Additional Sections</h1>
   </header>
 
   <nav>
@@ -140,6 +170,12 @@
       <input type="text" id="search-input" placeholder="Search notes...">
       <button onclick="searchText()">Search</button>
     </div>
+
+    <div class="part-toggle"> 
+      <a href="additional_sections.html" class="active">Parts 1-2</a>
+      <a href="additional_sections-part3.html">Part 3</a>
+    </div>
+
 
     <!-- 白色容器 -->
     <div class="content-wrapper">
@@ -268,7 +304,7 @@
   </main>
 
   <footer>
-    <p>Created by Joe's group</p>
+    <p>Adrift in the Ocean of Life</p>
   </footer>
 
   <script>
