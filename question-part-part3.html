@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Never Let Me Go - [Section] (Part 3)</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+    /* ========== Global Reset & Full Height ========== */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow-x: hidden; /* 避免横向滚动条 */
+    }
+    /* ========== Flexbox Sticky Footer Setup ========== */
+    body {
+      display: flex;
+      flex-direction: column;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #e3f6f5; /* Tiffany Blue */
+      color: #333;
+    }
+
+    header {
+      background-color: #ffccd5; /* Pink */
+      text-align: center;
+      padding: 30px 20px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      background-color: #ffe5ec; /* Lighter Pink */
+      padding: 10px;
+    }
+    nav a {
+      color: #333;
+      text-decoration: none;
+      background-color: #e3f6f5; /* Tiffany Blue */
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    nav a:hover {
+      background-color: #bde0fe; /* Lighter Blue on Hover */
+    }
+
+    main {
+      flex: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    /* 白色容器 */
+    .content-wrapper {
+      background-color: #ffffff; 
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    /* 标题粉色 */
+    h2, h3, h4 {
+      color: #ff5678;
+    }
+
+    /* ========== Footer ========== */
+    footer {
+      background-color: #ffccd5;
+      text-align: center;
+      padding: 15px;
+    }
+
+    /* ========== Search Highlight ========== */
+    .highlight {
+      background-color: yellow;
+    }
+
+    .search-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .search-container input {
+      padding: 8px;
+      width: 200px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .search-container button {
+      padding: 8px 15px;
+      margin-left: 5px;
+      border: none;
+      border-radius: 5px;
+      background-color: #ffccd5;
+      color: #333;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .search-container button:hover {
+      background-color: #ff5678;
+      color: #fff;
+    }
+
+    /* Buttons for Part 3 and Back */
+
+    #dify-chatbot-bubble-button {
+      background-color: #ff5678 !important;
+    }
+
+    #dify-chatbot-bubble-window {
+      width: 30rem !important;
+      height: 35rem !important;
+    }
+
+    .part-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.part-toggle a {
+  padding: 8px 20px;
+  background-color: #ffccd5;
+  color: #333;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.part-toggle a:hover {
+  background-color: #ff5678;
+  color: #fff;
+}
+
+/* .part-toggle a.active {
+  background-color: #ff5678;
+  color: #fff;
+} */
+
+#three{
+    background-color: #ff5678;
+  color: #fff;
+}
+
+
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Question Part (Part 3)</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="setting.html">Setting</a>
+    <a href="characters.html">Characters</a>
+    <a href="themes.html">Themes</a>
+    <a href="question-part.html">Question Part</a>
+    <a href="important-moments.html">Important Moments</a>
+    <a href="additional_sections.html">Additional Sections</a>
+  </nav>
+
+  <main>
+    <!-- 搜索框 -->
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="Search notes...">
+      <button onclick="searchText()">Search</button>
+    </div>
+
+
+    <div class="part-toggle"> 
+        <a href="question-part.html" class="active">Parts 1-2</a>
+        <a href="question-part-part3.html"  id="three">Part 3</a>
+      </div>
+
+
+    <!-- 白色容器 (empty for now, as requested) -->
+    <div class="content-wrapper">
+      <!-- This area is intentionally left empty for Part 3 content -->
+      <h3>Chapter 18</h3>
+      <p>1. how does the role of carer affect Kathy's sense of self and her understanding of her purpose?</p>
+      <p>2. what does the loneliness experienced by the carer tell us about the wider theme of isolation and connection in the story?</p>
+      <p>3. what motivates Kathy to continue to act as a carer despite the emotional and physical devastation?</p>
+      <p>4. how does Laura's attitude to the carer role reflect her internal struggles and past experiences?</p>
+      <p>5. what is the significance of Hailsham's closure and how does it symbolise the loss of the character's identity and community?</p>
+      <p>6. how does the encounter with Laura in the car park facilitate Kathy's reflection on her past and future?</p>
+      
+      <hr/>
+      
+      <h3>Chapter 19</h3>
+      <p>1. how does the trip to Kingsfield Rehabilitation Centre highlight the differences between rehabilitation centres and the impact of the environment on the characters' sense of self?</p>
+      <p>2. does the boat in the swamp symbolise the character's hopes and dreams?</p>
+      <p>3. what motivates Kathy and Ruth to plan a trip to see the boat?</p>
+      <p>4. how does Tommy's reaction to the boat and the journey reveal his feelings about the past and the future?</p>
+      <p>5. what is the significance of the boat being stranded in the swamp and how does it relate to the characters' feelings of being stranded or adrift in their lives?</p>
+      <p>6. How do the interactions between Cathy, Ruth, and Tommy on the journey reveal underlying tensions and unspeakable emotions?</p>
+      
+      <hr/>
+      
+      <h3>Chapter 20</h3>
+      <p>1. how does Kathy's decision to become Tommy's carer reflect her understanding of her role and her relationship with Tommy?</p>
+      <p>2. what does the routine of visiting Tommy and their shared activities reveal about their relationship and the nature of caring?</p>
+      <p>3. what motivates Kathy to initiate a sexual relationship with Tommy and how does this reflect her desire for intimacy and connection?</p>
+      <p>4. how does Tommy's response to their sexual relationship reveal his feelings about their relationship and his own identity?</p>
+      <p>5. what is the significance of Tommy's room at the Kingsfield Centre and how does it symbolise their relationship and the constraints of their environment?</p>
+      <p>6. how does the recurring theme of Tommy's drawing reflect his inner state and the characters' hopes for the future?</p>
+      
+      <hr/>
+      
+      <h3>Chapter 21</h3>
+      <p>1. how does the visit to Her Ladyship and the subsequent conversation with Miss Emily challenge the character's understanding of his purpose and the significance of the gallery?</p>
+      <p>2. what do the revelations about the gallery and the rumours of its postponement reveal about the wider themes of control and autonomy in the story?</p>
+      <p>3. what motivates Kathy and Tommy to go to Mrs Emily and Miss Emily and how does this reflect their desire for answers and their sense of control over their lives?</p>
+      <p>4. how does Miss Emily's explanation of the gallery and the rumours of the extension affect Kathy and Tommy's motivations and hopes for the future?</p>
+      <p>5. what is the significance of the gallery and the students‘ art collection, and how does it symbolise the characters’ identities as well as broader themes of humanity and art?</p>
+      <p>6. how do the interactions between Madame, Miss Emily and the characters reveal underlying tensions and unspeakable emotions?</p>
+      
+      <hr/>
+      
+      <h3>Chapter 22</h3>
+      <p>1. how do conversations with Miss Emily and Her Ladyship about the Morningsdale scandal and Hailsham's closure affect the characters' understanding of their own purpose and the wider context of their existence?</p>
+      <p>2. what do the ethical and historical contexts of Hailsham reveal about the themes of exploitation and human nature in the story?</p>
+      <p>3. what motivates Miss and Mrs Emily to share their views on the gallery and the rumours of the extension, and how does this reflect their own motivations and beliefs?</p>
+      <p>4. how do the conversations with Miss and Mrs Emily challenge Kathy and Tommy's motivations and hopes for the future?</p>
+      <p>5. what is the significance of the Morningsdale scandal and its effect on Hailsham?</p>
+      <p>6. how do the characters' interactions with Miss and Mrs Emily reveal underlying tensions and unspoken emotions?</p>
+      
+      <hr/>
+      
+      <h3>Chapter 23</h3>
+      <p>1. how does the evolving relationship between Kathy and Tommy reflect their understanding of their characters and the nature of their connection?</p>
+      <p>2. what does Kathy and Tommy's final goodbye reveal about their relationship and the wider theme of ‘loss and memory’?</p>
+      <p>3. what prompts Tommy to ask for a different person to care for him, and how does this reflect his feelings about his relationship with Kathy and about his own identity?</p>
+      <p>4. how does Kathy's response to Tommy's request reveal her own motivations and feelings about their relationship and her role as carer?</p>
+      <p>5. what is the significance of the final scene in the field and how does it symbolise the characters' emotions as well as the wider themes of loss and acceptance?</p>
+      <p>6. how do the reflections on memories and the search for Hailsham in the final paragraphs reveal the characters' desire for connection and the lasting impact of their past?</p> 
+    </div>
+  </main>
+
+  <footer>
+    <p>Adrift in the Ocean of Life</p>
+  </footer>
+
+  <script>
+    function searchText() {
+      const inputVal = document.getElementById('search-input').value.trim();
+      const contentArea = document.querySelector('.content-wrapper');
+      if (!contentArea) return;
+
+      // 1) 移除已有的高亮
+      contentArea.innerHTML = contentArea.innerHTML.replace(/<span class="highlight">|<\/span>/g, '');
+
+      // 2) 如果输入为空，不处理
+      if (!inputVal) return;
+
+      // 3) 匹配并高亮
+      const regex = new RegExp(inputVal, 'gi');
+      contentArea.innerHTML = contentArea.innerHTML.replace(regex, (match) => `<span class="highlight">${match}</span>`);
+    }
+
+    // 监听回车
+    document.getElementById('search-input').addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        searchText();
+      }
+    });
+  </script>
+
+  <script>
+    window.difyChatbotConfig = {
+      token: '7r1Vgfi7VIQz5Ac9'
+    }
+  </script>
+  <script
+    src="https://udify.app/embed.min.js"
+    id="7r1Vgfi7VIQz5Ac9"
+    defer>
+  </script>
+</body>
+</html>
