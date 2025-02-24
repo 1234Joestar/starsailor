@@ -1,0 +1,354 @@
+<!-- FILE: question-part.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Never Let Me Go - Question Part</title>
+  <style>
+    /* ========== Global Reset & Full Height ========== */
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+    /* ========== Global Reset & Full Height ========== */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow-x: hidden; /* 避免横向滚动条 */
+    }
+    /* ========== Flexbox Sticky Footer Setup ========== */
+    body {
+      display: flex;
+      flex-direction: column;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #e3f6f5; /* Tiffany Blue */
+      color: #333;
+    }
+
+    header {
+      background-color: #ffccd5;
+      text-align: center;
+      padding: 30px 20px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      background-color: #ffe5ec;
+      padding: 10px;
+    }
+    nav a {
+      color: #333;
+      text-decoration: none;
+      background-color: #e3f6f5;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    nav a:hover {
+      background-color: #bde0fe;
+    }
+
+    main {
+      flex: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* 白色容器：包裹正文 */
+    .content-wrapper {
+      background-color: #ffffff; 
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    /* 标题粉色 (h2, h3) */
+    h2, h3 {
+      color: #ff5678;
+    }
+
+    /* 原先的 ol 或 p 样式可保留；如需也可加 style */
+    ol {
+      margin-left: 20px;
+    }
+
+    footer {
+      background-color: #ffccd5;
+      text-align: center;
+      padding: 15px;
+    }
+
+    /* ========== Search Highlight ========== */
+    .highlight {
+      background-color: yellow;
+    }
+    .search-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .search-container input {
+      padding: 8px;
+      width: 200px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .search-container button {
+      padding: 8px 15px;
+      margin-left: 5px;
+      border: none;
+      border-radius: 5px;
+      background-color: #ffccd5;
+      color: #333;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .search-container button:hover {
+      background-color: #ff5678;
+      color: #fff;
+    }
+
+
+    #dify-chatbot-bubble-button {
+    background-color: #ff5678 !important;
+    }
+
+    #dify-chatbot-bubble-window {
+    width: 30rem !important;
+    height: 35rem !important;
+    }
+
+
+
+    .part-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.part-toggle a {
+  padding: 8px 20px;
+  background-color: #ffccd5;
+  color: #333;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.part-toggle a:hover {
+  background-color: #ff5678;
+  color: #fff;
+}
+
+.part-toggle a.active {
+  background-color: #ff5678;
+  color: #fff;
+}
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Question Part</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="setting.html">Setting</a>
+    <a href="characters.html">Characters</a>
+    <a href="themes.html">Themes</a>
+    <a href="question-part.html">Question Part</a>
+    <a href="important-moments.html">Important Moments</a>
+    <a href="additional_sections.html">Additional Sections</a>
+    <a href="https://sketchfab.com/3d-models/panopticonthisdl-ff4a7ac8f29b4fbfb0b398bee73667de" target="_blank">Comparative Panopticon</a>
+  </nav>
+
+  <main>
+    <!-- 搜索框 -->
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="Search notes...">
+      <button onclick="searchText()">Search</button>
+    </div>
+
+    <div class="part-toggle"> 
+      <a href="question-part.html" class="active">Parts 1-2</a>
+      <a href="question-part-part3.html">Part 3</a>
+    </div>
+
+
+    <!-- 白色容器，放正文 -->
+    <div class="content-wrapper">
+
+      <h3>Chapter1</h3>
+      <p>1. How did Kathy make an emotional connection with the donor in her role as a caregiver?</p>
+      <p>2. How Kathy's memories of Hailsham influenced her future life?</p>
+      <p>3. What is the relationship between Kathy's freedom and rights to choose who she cares for?</p>
+      <p>4. How does Kathy's persistence in her work reflect her love of caregiving?</p>
+      <hr/>
+      <h3>Chapter2</h3>
+      <p>1. What kind of empathy does Kathy show in her interactions with Tommy and how does this affect her perception of him?</p>
+      <p>2. How do Kathy's memories of Hailsham relate to Tommy?</p>
+      <p>3. How does Tommy's disappointment in the soccer tryouts reflect his social status at school?</p>
+      <p>4. How does Kathy's choice to approach Tommy when he is angry relate to her personality?</p>
+      <p>5. How does Kathy's concern for her clothing contrast with Tommy's concern for the soccer game?</p>
+<hr/>
+      <h3>Chapter3</h3>
+      <p>1. How does Kathy's behavior regarding her time in Hailsham reflect her personal growth process?</p>
+      <p>2. How does Kathy's conversation with Tommy on the stairs demonstrate the development of their relationship?</p>
+      <p>3. How does Kathy's handling of the skirmishes that occurred between her and Tommy reflect her maturation?</p>
+      <p>4. How does Kathy's memory of Hailsham relate to her reflections on her current life?</p>
+<hr/>
+      <h3>Chapter4</h3>
+      <p>1. How does Kathy's view of her relationship with Tommy affect her perception of other students, especially those involved in the prank?</p>
+      <p>2. How does Kathy's empathy for her interactions with Tommy contrast with her attitude toward other students at Hailsham?</p>
+      <p>3. How did Kathy's handling of the skirmishes that occurred between her and Tommy affect their relationship?</p>
+<hr/>
+      <h3>Chapter5</h3>
+      <p>1. How does the relationship between Kathy and Ruth evolve throughout the story, and what events contribute to their bond?</p>
+      <p>2. What is the significance of the "secret guard" and how does it reflect the children's understanding of the world and their place in it?</p>
+      <p>3. How do the children's perceptions of the adults, particularly Miss Geraldine, influence their actions and beliefs?</p>
+      <p>4. What role does the concept of favoritism play in the dynamics between the students and the guardians, and how does it affect the protagonist's feelings towards Ruth?</p>
+      <p>5. How does the setting of Hailsham and the nearby woods contribute to the atmosphere of the story and the characters' psychological state?</p>
+<hr/>
+      <h3>Chapter6</h3>
+      <p>1. How does the protagonist's relationship with Ruth evolve throughout the story, and what events contribute to this development?</p>
+      <p>2. In what ways does the concept of "Norfolk" serve as a source of comfort and hope for the characters, and how does this reflect their understanding of the world beyond Hailsham?</p>
+      <p>3. How does the incident with Madame in the dormitory affect the protagonist's understanding of the adults' role in their lives and their own emotions?</p>
+      <p>4. What does the protagonist's attachment to the tape and the song "Never Let Me Go" reveal about their inner desires and fears?</p>
+      <p>5. How does the theme of secrecy and the characters' private nooks contribute to the overall atmosphere and themes of the story?</p>
+<hr/>
+      <h3>Chapter7</h3>
+      <p>1. How does Kathy's perspective on her life at Hailsham change during her last years there, and what events contribute to this shift in perception?</p>
+      <p>2. In what ways does Miss Lucy's speech on the veranda influence the students' understanding of their futures and their attitudes towards the donations?</p>
+      <p>3. How does the "unzipping" joke reflect the students' emotional coping mechanisms and their understanding of the donations process?</p>
+      <p>4. What is the significance of Kathy's decision not to tell Tommy the truth about his elbow, and how does it relate to the themes of trust and deception in the story?</p>
+      <p>5. How does the incident with Tommy and the ruler splint illustrate the power dynamics and the influence of peer pressure within the group of students?</p>
+<hr/>
+      <h3>Chapter8</h3>
+      <p>1. How does Kathy's discovery of Miss Lucy's distress in Room 22 affect her understanding of the guardians and their struggles?</p>
+      <p>2. In what ways does the "unzipping" joke serve as a coping mechanism for the students, and how does it reflect their perception of the donations process?</p>
+      <p>3. How does Tommy's reaction to Laura's comment about the mud on his shirt indicate a change in his personality or his state of mind?</p>
+      <p>4. What is the significance of the calendar that Patricia C. made, and how does it reflect the students' connection to Hailsham and their anticipation of the future?</p>
+      <p>5. How do the students' attitudes towards sex and relationships evolve as they approach the age of sixteen, and what role do the guardians' mixed messages play in this development?</p>
+<hr/>
+      <h3>Chapter9</h3>
+      <p>1. How does Kathy's perspective on her relationship with Harry change after her friends' comments about her being the "natural successor" to Ruth?</p>
+      <p>2. In what ways does the "natural successor" label influence Kathy's decisions and actions towards Harry and Tommy?</p>
+      <p>3. How does Kathy's approach to the idea of sex reflect the broader themes of coming of age and the search for identity in the story?</p>
+      <p>4. What is the significance of Kathy's encounter with Harry at the recovery center, and how does it affect her feelings towards him?</p>
+      <p>5. How does the revelation of Miss Lucy's conversation with Tommy impact the students' understanding of their purpose and their future?</p>
+<hr/>
+      <h3>Chapter10</h3>
+      <p>1. How does Kathy's perspective on her essay change over time, and what does this say about her adaptation to life after Hailsham?</p>
+      <p>2. In what ways does the essay serve as a metaphor for the characters' transition from Hailsham to the Cottages?</p>
+      <p>3. How do the characters' experiences at the Cottages reflect their struggle to reconcile their past with their present and future?</p>
+      <p>4. What does the dynamic between Kathy and Ruth reveal about the complexities of friendship and personal growth?</p>
+      <p>5. How does the concept of "dream futures" affect the characters' sense of identity and their decisions?</p>
+<hr/>
+      <h3>Chapter11</h3>
+      <p>1. How does Kathy's relationship with Ruth evolve after their argument, and what impact does this have on Kathy's understanding of friendship and trust?</p>
+      <p>2. How does Kathy's experience with one-nighters at the Cottages reflect her struggle to adapt to the new social norms and her feelings about sex?</p>
+      <p>3. What does the concept of "possibles" reveal about the characters' perceptions of their futures and their actions in the present?</p>
+      <p>4. How does Tommy's observation of Kathy's behavior while looking at the magazines reveal about her internal conflict and her need for connection?</p>
+      <p>5. How does the dynamic between the characters, particularly Kathy and Ruth, highlight the theme of growing up and the struggle for self-discovery?</p>
+<hr/>
+      <h3>Chapter12</h3>
+      <p>1. How does Kathy's relationship with Tommy evolve after their conversation in the barn, and what does this reveal about their understanding of each other's experiences?</p>
+      <p>2. What is the significance of the "possibles" theory in the context of the characters' lives, and how does it affect their perceptions of themselves and their futures?</p>
+      <p>3. How does the concept of a "dream future" influence Ruth's behavior and her interactions with the other characters?</p>
+      <p>4. In what ways does the dynamic between the characters, particularly Kathy and Ruth, reflect the broader themes of identity and belonging?</p>
+      <p>5. How does the mention of a trip to Norfolk serve as a turning point for the characters, and what does it imply about their search for meaning and connection?</p>
+<hr/>
+      <h3>Chapter13</h3>
+      <p>1. How does the concept of "possibles" affect the characters' sense of identity and their decisions regarding their futures?</p>
+      <p>2. In what ways does the trip to Norfolk serve as a catalyst for the characters to confront their beliefs and the reality of their lives?</p>
+      <p>3. How does the dynamic between Kathy, Ruth, and Tommy reflect the broader themes of friendship, loyalty, and the struggle for self-discovery?</p>
+      <p>4. What is the significance of the "deferral" rumor, and how does it impact the characters' perceptions of their destinies?</p>
+      <p>5. How does the interaction between the characters and the veterans reveal the complexities of their relationships and the underlying power dynamics?</p>
+<hr/>
+      <h3>Chapter14</h3>
+      <p>1. How does the revelation about the "possible" impact Ruth's sense of identity and her future, and what does her reaction say about her character?</p>
+      <p>2. In what ways does the concept of a "possible" both unite and divide the characters, and what does this reveal about their relationships and individual hopes?</p>
+      <p>3. How does the dynamic between Kathy, Ruth, and Tommy change after the confrontation about the "possible," and what does this say about their friendship?</p>
+      <p>4. What is the significance of the deferral rumor, and how does it affect the characters' perceptions of their destinies and the guardians' roles?</p>
+      <p>5. How does the visit to the art gallery and the encounter with the "possible" influence the characters' understanding of their past and their future?</p>
+<hr/>
+      <h3>Chapter15</h3>
+      <p>1. How does the concept of "possibles" and the deferral rumor impact the characters' sense of self and their potential futures?</p>
+      <p>2. What is the significance of Kathy's search for her lost tape, and how does it reflect her emotional state and her understanding of her identity?</p>
+      <p>3. How does Tommy's creation of imaginary animals serve as a coping mechanism, and what does it reveal about his character and his hopes for the future?</p>
+      <p>4. In what ways does the trip to Norfolk serve as a turning point for the characters, and what does it reveal about their relationships and personal growth?</p>
+      <p>5. How do the characters' attitudes towards their art and the idea of love influence their decisions and their perception of their place in the world?</p>
+<hr/>
+      <h3>Chapter16</h3>
+      <p>1. How does Kathy's relationship with Ruth evolve after their confrontation in the churchyard, and what does this reveal about their friendship and personal growth?</p>
+      <p>2. In what ways does Tommy's creation of imaginary animals serve as a coping mechanism, and what does it reveal about his character and his hopes for the future?</p>
+      <p>3. How does the concept of "possibles" and the deferral rumor impact the characters' sense of self and their potential futures?</p>
+      <p>4. How does the trip to Norfolk and the subsequent events influence the characters' understanding of their past and their expectations for the future?</p>
+      <p>5. How do the characters' attitudes towards their art and the idea of love influence their decisions and their perception of their place in the world?</p>
+<hr/>
+      <h3>Chapter17</h3>
+      <p>1. How does Kathy's decision to start her training as a carer impact her relationships with Ruth and Tommy, and what does this reveal about her character development?</p>
+      <p>2. In what ways does Kathy's relationship with Lenny influence her actions and decisions regarding her future and her friendships?</p>
+      <p>3. How does the concept of "deferrals" for couples in love affect the characters' perceptions of love and their potential futures?</p>
+      <p>4. How does the incident in the churchyard with Ruth and Tommy shape Kathy's understanding of loyalty and betrayal among friends?</p>
+      <p>5. What is the significance of Kathy's recall of the rhubarb patch incident at Hailsham, and how does it relate to her current feelings and relationships?</p>
+
+    </div> <!-- .content-wrapper end -->
+  </main>
+
+  <footer>
+    <p>DeepSee&reg</p>
+  </footer>
+
+  <script>
+    function searchText() {
+      const inputVal = document.getElementById('search-input').value.trim();
+      const contentArea = document.querySelector('.content-wrapper');
+      if (!contentArea) return;
+
+      // 1) 移除已有的高亮
+      contentArea.innerHTML = contentArea.innerHTML.replace(/<span class="highlight">|<\/span>/g, '');
+
+      // 2) 如果输入为空，不处理
+      if (!inputVal) return;
+
+      // 3) 匹配并高亮
+      const regex = new RegExp(inputVal, 'gi');
+      contentArea.innerHTML = contentArea.innerHTML.replace(regex, (match) => `<span class="highlight">${match}</span>`);
+    }
+
+    // 监听回车
+    document.getElementById('search-input').addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        searchText();
+      }
+    });
+  </script>
+
+
+
+<script>
+  window.difyChatbotConfig = {
+   token: '7r1Vgfi7VIQz5Ac9'
+  }
+ </script>
+ <script
+  src="https://udify.app/embed.min.js"
+  id="7r1Vgfi7VIQz5Ac9"
+  defer>
+ </script> 
+
+
+
+
+</body>
+</html>

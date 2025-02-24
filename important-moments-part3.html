@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Never Let Me Go - [Section] (Part 3)</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+    /* ========== Global Reset & Full Height ========== */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow-x: hidden; /* 避免横向滚动条 */
+    }
+    /* ========== Flexbox Sticky Footer Setup ========== */
+    body {
+      display: flex;
+      flex-direction: column;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #e3f6f5; /* Tiffany Blue */
+      color: #333;
+    }
+
+    header {
+      background-color: #ffccd5; /* Pink */
+      text-align: center;
+      padding: 30px 20px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      background-color: #ffe5ec; /* Lighter Pink */
+      padding: 10px;
+    }
+    nav a {
+      color: #333;
+      text-decoration: none;
+      background-color: #e3f6f5; /* Tiffany Blue */
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    nav a:hover {
+      background-color: #bde0fe; /* Lighter Blue on Hover */
+    }
+
+    main {
+      flex: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    /* 白色容器 */
+    .content-wrapper {
+      background-color: #ffffff; 
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    /* 标题粉色 */
+    h2, h3, h4 {
+      color: #ff5678;
+    }
+
+    /* ========== Footer ========== */
+    footer {
+      background-color: #ffccd5;
+      text-align: center;
+      padding: 15px;
+    }
+
+    /* ========== Search Highlight ========== */
+    .highlight {
+      background-color: yellow;
+    }
+
+    .search-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .search-container input {
+      padding: 8px;
+      width: 200px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .search-container button {
+      padding: 8px 15px;
+      margin-left: 5px;
+      border: none;
+      border-radius: 5px;
+      background-color: #ffccd5;
+      color: #333;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .search-container button:hover {
+      background-color: #ff5678;
+      color: #fff;
+    }
+
+    /* Buttons for Part 3 and Back */
+
+    #dify-chatbot-bubble-button {
+      background-color: #ff5678 !important;
+    }
+
+    #dify-chatbot-bubble-window {
+      width: 30rem !important;
+      height: 35rem !important;
+    }
+
+    .part-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.part-toggle a {
+  padding: 8px 20px;
+  background-color: #ffccd5;
+  color: #333;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.part-toggle a:hover {
+  background-color: #ff5678;
+  color: #fff;
+}
+
+/* .part-toggle a.active {
+  background-color: #ff5678;
+  color: #fff;
+} */
+
+#three{
+    background-color: #ff5678;
+  color: #fff;
+}
+
+
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Important Moments (Part 3)</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="setting.html">Setting</a>
+    <a href="characters.html">Characters</a>
+    <a href="themes.html">Themes</a>
+    <a href="question-part.html">Question Part</a>
+    <a href="important-moments.html">Important Moments</a>
+    <a href="additional_sections.html">Additional Sections</a>
+    <a href="https://sketchfab.com/3d-models/panopticonthisdl-ff4a7ac8f29b4fbfb0b398bee73667de" target="_blank">Comparative Panopticon</a>
+  </nav>
+
+  <main>
+    <!-- 搜索框 -->
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="Search notes...">
+      <button onclick="searchText()">Search</button>
+    </div>
+
+
+    <div class="part-toggle"> 
+        <a href="important-moments.html" class="active">Parts 1-2</a>
+        <a href="important-moments-part3.html"  id="three">Part 3</a>
+      </div>
+
+
+    <!-- 白色容器 (empty for now, as requested) -->
+    <div class="content-wrapper">
+      <!-- This area is intentionally left empty for Part 3 content -->
+      <h3>The Metaphor of a Boat</h3>
+<p>In the three parts of Never Let Me Go, there are two major episodes that profoundly influence the narrative direction of the entire story. The first is the boat ride, which is full of metaphors and symbolism. Firstly, when crossing the bars, initially Tommy and Kathy help Ruth to enter, but eventually, Ruth walks out on her own and no longer needs their help. This shift symbolizes Ruth's acceptance of her fate and suggests her ultimate end. The boat also represents a deeper meaning.  In an earlier conversation, Ruth describes the boat as it floats in the wind, presenting a beautiful image. However, when they travel through the woods to see the boat now abandoned in the marsh. They found that it had worn out, it had become a symbol of abandonment that represents themselves as one who lost to freedom and was never able to sail far. Perhaps in the past, the ship had sailed freely across the sea, symbolizing the power to manipulate everything like Miss Emily, but as they had lost their support, the ship would be lost too, which symbolizes the eternal abandonment of a clone and hinting the fate that they could not change.</p>
+      <hr>
+<h3>The Reveal of The Truth</h3>
+<p>The second big moment occurred at Madame's house, where they met the final person in charge. Miss Emily, reveals to them the true significance of their creation and its eventual end. She tells them that the so-called deferred donation is just a rumor and it is inevitable to meet their fate to donate. She also explains the purpose of the painting, which is not only artistic creations but to reveal the clones' true inner thoughts, and thus to know the difference between them and normal people. She tells the whole story of the human cloning project, explaining the original purpose of Hailsham as a place to raise them. However, due to the Morningdale scandal, the project eventually lost people's trust leading to bankruptcy. The clones were eventually abandoned and left to accept a fate they could not change.</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>DeepSee&reg</p>
+  </footer>
+
+  <script>
+    function searchText() {
+      const inputVal = document.getElementById('search-input').value.trim();
+      const contentArea = document.querySelector('.content-wrapper');
+      if (!contentArea) return;
+
+      // 1) 移除已有的高亮
+      contentArea.innerHTML = contentArea.innerHTML.replace(/<span class="highlight">|<\/span>/g, '');
+
+      // 2) 如果输入为空，不处理
+      if (!inputVal) return;
+
+      // 3) 匹配并高亮
+      const regex = new RegExp(inputVal, 'gi');
+      contentArea.innerHTML = contentArea.innerHTML.replace(regex, (match) => `<span class="highlight">${match}</span>`);
+    }
+
+    // 监听回车
+    document.getElementById('search-input').addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        searchText();
+      }
+    });
+  </script>
+
+  <script>
+    window.difyChatbotConfig = {
+      token: '7r1Vgfi7VIQz5Ac9'
+    }
+  </script>
+  <script
+    src="https://udify.app/embed.min.js"
+    id="7r1Vgfi7VIQz5Ac9"
+    defer>
+  </script>
+</body>
+</html>
